@@ -56,10 +56,19 @@ function playRound() {
     || computerChoice === 'Scissors' && playerChoice === 'Paper') {
         computerScore = ++computerScore;
         console.log(computerScore);
-        alert('You lose :(');
+        alert('You lose this round :(');
     }
     /* Since all lose conditions are explicitly stated as well as tie, only other options are win */
     else {
-        alert('You win :)');
+        playerScore = ++playerScore;
+        console.log(playerScore)
+        alert('You win this round :)');
+    }
+}
+
+function playGame() {
+    for (i = 0; computerScore < 3 && playerScore < 3; i++) {
+    playRound();
+    alert ('The current score is Computer: ' + computerScore + ' Player: ' + playerScore);
     }
 }
