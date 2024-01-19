@@ -39,8 +39,7 @@ function getPlayerChoice () {
 } 
 
 /* I want a global variable to track the score so I can stop when one player reaches 3 wins */
-let computerScore = 0;
-let playerScore = 0;
+
 function playRound() {
     getComputerChoice();
     getPlayerChoice();
@@ -67,6 +66,8 @@ function playRound() {
 }
 
 function playGame() {
+computerScore = 0;
+playerScore = 0;
     for (i = 0; computerScore < 2 && playerScore < 2; i++) {
         playRound();
         alert('The current score is Computer: ' + computerScore + ' Player: ' + playerScore);
@@ -75,7 +76,20 @@ function playGame() {
     if (computerScore === 3) {
         alert('I win this time! >:)');
     }
+    else if (playerScore === 3) {
+        alert('Drats! You\'ve bested me this time! >:(');
+    }
+
+    if (confirm("Would you like to play again?")) {
+        alert('You\'re on!');
+        playGame();
+    }
     else {
-        alert('Drats! You\'ve bested me this time! >:(')
+        if (computerScore === 3) {
+            alert('CYA L8R LOSER');
+        }
+        else {
+            alert('Come on, reload the page. Give me another chance!');
+        }
     }
 }
