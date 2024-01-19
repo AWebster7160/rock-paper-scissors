@@ -36,7 +36,6 @@ function getPlayerChoice () {
     else {
         alert('Not a valid choice');
     }
-    return playerChoice;
 } 
 
 
