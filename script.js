@@ -24,7 +24,6 @@ Finally, it will return playerChoice which should be 'Rock' 'Paper' or 'Scissors
 function getPlayerChoice () {
     playerInput = prompt('Rock, Paper, or Scissors?');
     playerInputLow = playerInput.toLowerCase();
-    console.log(playerInputLow);
     if (playerInputLow === 'rock' 
     || playerInputLow ==='paper' 
     || playerInputLow === 'scissors') {
@@ -38,4 +37,14 @@ function getPlayerChoice () {
     }
 } 
 
-
+function playRound() {
+    getComputerChoice();
+    getPlayerChoice();
+    console.log(computerChoice + playerChoice);
+    if (computerChoice === playerChoice) {
+        alert('It\'s a tie! We both picked ' + playerChoice + '!');
+        getComputerChoice();
+        getPlayerChoice();
+        console.log(computerChoice + playerChoice);
+    }
+}
