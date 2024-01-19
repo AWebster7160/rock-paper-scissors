@@ -67,8 +67,15 @@ function playRound() {
 }
 
 function playGame() {
-    for (i = 0; computerScore < 3 && playerScore < 3; i++) {
+    for (i = 0; computerScore < 2 && playerScore < 2; i++) {
+        playRound();
+        alert('The current score is Computer: ' + computerScore + ' Player: ' + playerScore);
+    }
     playRound();
-    alert ('The current score is Computer: ' + computerScore + ' Player: ' + playerScore);
+    if (computerScore === 3) {
+        alert('I win this time! >:)');
+    }
+    else {
+        alert('Drats! You\'ve bested me this time! >:(')
     }
 }
