@@ -43,8 +43,15 @@ function playRound() {
     console.log(computerChoice + playerChoice);
     if (computerChoice === playerChoice) {
         alert('It\'s a tie! We both picked ' + playerChoice + '!');
-        getComputerChoice();
-        getPlayerChoice();
-        console.log(computerChoice + playerChoice);
+        playRound();
+        
+    }
+    else if (computerChoice === 'Rock' && playerChoice === 'Scissors'
+    || computerChoice === 'Paper' && playerChoice === 'Rock'
+    || computerChoice === 'Scissors' && playerChoice === 'Paper') {
+        alert('You lose :(');
+    }
+    else {
+        alert('You win :)');
     }
 }
