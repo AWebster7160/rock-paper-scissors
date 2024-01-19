@@ -54,7 +54,6 @@ function playRound() {
     || computerChoice === 'Paper' && playerChoice === 'Rock'
     || computerChoice === 'Scissors' && playerChoice === 'Paper') {
         computerScore = ++computerScore;
-        console.log(computerScore);
         alert('You lose this round :(');
     }
     /* Since all lose conditions are explicitly stated as well as tie, only other options are win */
@@ -63,22 +62,25 @@ function playRound() {
         console.log(playerScore)
         alert('You win this round :)');
     }
+    console.log(computerScore + ' ' + playerScore);
 }
 
 function playGame() {
 computerScore = 0;
 playerScore = 0;
-    for (i = 0; computerScore < 2 && playerScore < 2; i++) {
+    for (rounds = 0; computerScore + playerScore < 5 && computerScore < 3 && playerScore < 3; rounds++) {
         playRound();
+        if (computerScore === 3) {
+            alert('I win this time! >:)');
+        }
+        else if (playerScore === 3) {
+            alert('Drats! You\'ve bested me this time! >:(');
+        }
+        else {
         alert('The current score is Computer: ' + computerScore + ' Player: ' + playerScore);
+        }
     }
-    playRound();
-    if (computerScore === 3) {
-        alert('I win this time! >:)');
-    }
-    else if (playerScore === 3) {
-        alert('Drats! You\'ve bested me this time! >:(');
-    }
+   
     if (confirm("Would you like to play again?")) {
         alert('You\'re on!');
         playGame();
