@@ -79,7 +79,6 @@ playerScore = 0;
     else if (playerScore === 3) {
         alert('Drats! You\'ve bested me this time! >:(');
     }
-
     if (confirm("Would you like to play again?")) {
         alert('You\'re on!');
         playGame();
