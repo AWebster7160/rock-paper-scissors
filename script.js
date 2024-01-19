@@ -34,23 +34,31 @@ function getPlayerChoice () {
     }
     else {
         alert('Not a valid choice');
+        getPlayerChoice();
     }
 } 
 
+/* I want a global variable to track the score so I can stop when one player reaches 3 wins */
+let computerScore = 0;
+let playerScore = 0;
 function playRound() {
     getComputerChoice();
     getPlayerChoice();
     console.log(computerChoice + playerChoice);
     if (computerChoice === playerChoice) {
         alert('It\'s a tie! We both picked ' + playerChoice + '!');
+        /* This restarts playRound()*/
         playRound();
         
     }
     else if (computerChoice === 'Rock' && playerChoice === 'Scissors'
     || computerChoice === 'Paper' && playerChoice === 'Rock'
     || computerChoice === 'Scissors' && playerChoice === 'Paper') {
+        computerScore = ++computerScore;
+        console.log(computerScore);
         alert('You lose :(');
     }
+    /* Since all lose conditions are explicitly stated as well as tie, only other options are win */
     else {
         alert('You win :)');
     }
