@@ -1,10 +1,6 @@
 const img = document.querySelector('#wantToSpin');
-const spinDown = [
-    { transform: 'rotate(.1turn)', easing: 'ease-in'},
-    
-];
 
-const spinUp = [
+const handHit = [
     { transform: 'rotate(0turn)'},
     {transform: 'rotate(.03turn', easing: 'ease-out', offset: '.17'},
     {transform: 'rotate(-.01turn'},
@@ -16,6 +12,6 @@ const spinTime = {
 
 window.addEventListener('keyup', (event) => {
     if (event.key === ' ') {
-    img.animate(spinUp, spinTime, spinUp);
+    img.animate(handHit, spinTime);
     };
 });
