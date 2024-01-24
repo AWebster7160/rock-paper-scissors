@@ -1,3 +1,9 @@
+let circle = document.getElementById('circle');
+const onMouseMove = (e) =>{
+    circle.style.left = e.pageX + 'px';
+    circle.style.top = e.pageY + 'px';
+} 
+document.addEventListener('mousemove', onMouseMove);
 
 /* getComputerChoice function should get a random integer (0, 1, or 2 with equal odds) 
 and convert 0 -> 'Rock', 1 -> 'Paper', and 2 -> 'Scissors'. 
@@ -70,6 +76,7 @@ computerScore = 0;
 playerScore = 0;
     for (rounds = 0; computerScore + playerScore < 5 && computerScore < 3 && playerScore < 3; rounds++) {
         playRound();
+        console.log()
         if (computerScore === 3) {
             alert('I win this time! >:)');
         }
@@ -77,7 +84,7 @@ playerScore = 0;
             alert('Drats! You\'ve bested me this time! >:(');
         }
         else {
-        alert('The current score is Computer: ' + computerScore + ' Player: ' + playerScore);
+            alert('The current score is Computer: ' + computerScore + ' Player: ' + playerScore);
         }
     }
    
