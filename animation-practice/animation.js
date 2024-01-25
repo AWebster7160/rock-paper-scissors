@@ -8,18 +8,16 @@ onkeydown = onkeyup = function (event) {
     if (input['Enter'] && input[' ']) {
         img.animate(handHit, palmTime,);
         imgRight.animate(handHitMirror, palmTime);
-    
+        playerFist.animate(hitHand, fistDownFast)
     }
 }
-
-
 
 const raiseHand = [
     {transform: 'rotate(-.08turn)'},
 ]
 
 const hitHand = [
-    {transform: 'rotate(-.03turn'}
+    {transform: 'rotate(-.03turn'},
 ]
 
 const handHit = [
@@ -37,17 +35,24 @@ const handHitMirror = [
 ];
 const palmTime = {
     duration: 800,
-    delay: 200,
+    delay: 100,
 }
 
 const fistUp = {
-    duration: 550,
+    duration: 400,
     fill: 'forwards',
 }
 
 const fistDown = {
-    duration: 200,
+    duration: 500,
     fill: 'forwards',
+    easing: 'ease-out'
+}
+
+const fistDownFast = {
+    duration: 100,
+    fill: 'forwards',
+    easing: 'ease-in'
 }
 
 window.addEventListener('keypress', (event) => {
