@@ -15,7 +15,7 @@ onkeydown = onkeyup = function (event) {
         playerFist.animate(hitPalm, fistDownTimeFast);
         computerFist.animate(hitPalmMirror, fistDownTimeFast);
         i++;
-        delete input['Enter']
+        delete input['Enter'];
     }
     else if (input['Enter'] && input[' '] && i === 3) {
         console.log('hi');
@@ -25,10 +25,10 @@ onkeydown = onkeyup = function (event) {
 }
 
 const raiseHand = [
-    {transform: 'rotate(-18deg) translateY(-40px)'}
+    {transform: 'rotate(-18deg) translateY(-44px)'}
 ]
 const raiseHandMirror = [
-    {transform: 'rotate(19deg) translateY(-40px)'},
+    {transform: 'rotate(12deg) translateY(-40px)'},
 ]
 const raiseHandTime = {
     duration: 800,
