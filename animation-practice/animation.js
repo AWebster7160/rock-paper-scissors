@@ -1,16 +1,19 @@
-const playerPalm = document.querySelector('#player-palm');
 const computerPalm = document.querySelector('#computer-palm');
-const computerThumb = document.querySelector('#computer-thumb')
+const computerThumb = document.querySelector('#computer-thumb');
+const computerFist = document.querySelector('#computer-fist');
+const playerPalm = document.querySelector('#player-palm');
 const playerFist = document.querySelector('#player-fist');
+
 const input = {};
 let i = 0;
 onkeydown = onkeyup = function (event) {
     input[event.key] = event.type == 'keydown';
     if (input['Enter'] && input[' '] && i < 3) {
-        playerPalm.animate(handHit, palmTime,);
-        computerPalm.animate(handHitMirror, palmTime);
-        computerThumb.animate(handHitMirror, palmTime);
-        playerFist.animate(hitHand, fistDownFast);
+        playerPalm.animate(palmHit, palmTime,);
+        computerPalm.animate(palmHitMirror, palmTime);
+        computerThumb.animate(palmHitMirror, palmTime);
+        playerFist.animate(hitPalm, fistDownTimeFast);
+        computerFist.animate(hitPalmMirror, fistDownTimeFast);
         i++
     }
     else if (input['Enter'] && input[' '] && i === 3) {
@@ -21,27 +24,34 @@ onkeydown = onkeyup = function (event) {
 
 
 const raiseHand = [
-    {transform: 'rotate(-29deg)'},
+    {transform: 'rotate(-18deg) translateY(-40px)'}
 ]
-
 const raiseHandMirror = [
-    {transform: 'rotate('}
+    {transform: 'rotate(19deg) translateY(-40px)'},
 ]
-const hitHand = [
-    {transform: 'rotate(-.03turn'},
+const raiseHandTime = {
+    duration: 800,
+    fill: 'forwards',
+    iterations: 1,
+}
+const hitPalm = [
+    {transform: 'rotate(-11deg'},
+]
+const hitPalmMirror = [
+    {transform: 'rotate(-10deg'},
 ]
 
-const handHit = [
-    { transform: 'rotate(0turn)'},
-    {transform: 'rotate(.03turn', easing: 'ease-out', offset: '.17'},
-    {transform: 'rotate(-.01turn'},
-    { transform: 'rotate(0turn)'},
+
+const palmHit = [
+    { transform: 'rotate(0)'},
+    {transform: 'rotate(4deg)', easing: 'ease-out', offset: '.17'},
+    {transform: 'rotate(0.6deg'},
+    { transform: 'rotate(0)'},
 ];
-
-const handHitMirror = [
-    { transform: 'rotate(-10deg)'},
-    {transform: 'rotate(-21deg', easing: 'ease-out', offset: '.17'},
-    {transform: 'rotate(-6.4deg'},
+const palmHitMirror = [
+    { transform: 'rotate(-6deg)'},
+    {transform: 'rotate(-14deg', easing: 'ease-out', offset: '.17'},
+    {transform: 'rotate(-8.4deg'},
     { transform: 'rotate(-10deg)'},
 ];
 const palmTime = {
@@ -49,18 +59,15 @@ const palmTime = {
     delay: 100,
 }
 
-const fistUp = {
-    duration: 400,
-    fill: 'forwards',
-}
 
-const fistDown = {
+
+const fistDownTime = {
     duration: 500,
     fill: 'forwards',
     easing: 'ease-out'
 }
 
-const fistDownFast = {
+const fistDownTimeFast = {
     duration: 100,
     fill: 'forwards',
     easing: 'ease-in'
@@ -68,13 +75,15 @@ const fistDownFast = {
 
 window.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
-        playerFist.animate(raiseHand, fistUp);
+        playerFist.animate(raiseHand, raiseHandTime);
+        computerFist.animate(raiseHandMirror, raiseHandTime);
     }
 })
 
 window.addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {
-        playerFist.animate(hitHand, fistDown);
+        playerFist.animate(hitPalm, fistDownTime);
+        computerFist.animate(hitPalmMirror, fistDownTime);
     }
 })
 
