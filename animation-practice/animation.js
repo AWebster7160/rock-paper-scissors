@@ -1,16 +1,22 @@
 const img = document.querySelector('#player-palm');
 const imgRight = document.querySelector('#computer-palm');
 const playerFist = document.querySelector('#player-fist');
-
 const input = {};
+let i = 0;
 onkeydown = onkeyup = function (event) {
     input[event.key] = event.type == 'keydown';
-    if (input['Enter'] && input[' ']) {
+    if (input['Enter'] && input[' '] && i < 3) {
         img.animate(handHit, palmTime,);
         imgRight.animate(handHitMirror, palmTime);
-        playerFist.animate(hitHand, fistDownFast)
+        playerFist.animate(hitHand, fistDownFast);
+        i++
     }
-}
+    else if (input['Enter'] && input[' '] && i === 3) {
+        console.log('hi');
+        return i = 0;
+    }
+    }
+
 
 const raiseHand = [
     {transform: 'rotate(-.08turn)'},
@@ -67,11 +73,3 @@ window.addEventListener('keyup', (event) => {
     }
 })
 
-window.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter' && keyLog[' '] === ' ') {
-    img.animate(handHit, palmTime,);
-    imgRight.animate(handHitMirror, palmTime);
-    
-    };
-
-});

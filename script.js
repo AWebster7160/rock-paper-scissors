@@ -1,9 +1,3 @@
-let circle = document.getElementById('circle');
-const onMouseMove = (e) =>{
-    circle.style.left = e.pageX + 'px';
-    circle.style.top = e.pageY + 'px';
-} 
-document.addEventListener('mousemove', onMouseMove);
 
 /* getComputerChoice function should get a random integer (0, 1, or 2 with equal odds) 
 and convert 0 -> 'Rock', 1 -> 'Paper', and 2 -> 'Scissors'. 
