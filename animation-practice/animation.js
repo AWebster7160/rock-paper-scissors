@@ -8,20 +8,21 @@ const input = {};
 let i = 0;
 onkeydown = onkeyup = function (event) {
     input[event.key] = event.type == 'keydown';
-    if (input['Enter'] && input[' '] && i < 3) {
+    if (input['Enter'] && input[' '] && i < 3 && !event.repeat) {
         playerPalm.animate(palmHit, palmTime,);
         computerPalm.animate(palmHitMirror, palmTime);
         computerThumb.animate(palmHitMirror, palmTime);
         playerFist.animate(hitPalm, fistDownTimeFast);
         computerFist.animate(hitPalmMirror, fistDownTimeFast);
-        i++
+        i++;
+        delete input['Enter']
     }
     else if (input['Enter'] && input[' '] && i === 3) {
         console.log('hi');
         return i = 0;
     }
-    }
-
+    
+}
 
 const raiseHand = [
     {transform: 'rotate(-18deg) translateY(-40px)'}
@@ -40,7 +41,16 @@ const hitPalm = [
 const hitPalmMirror = [
     {transform: 'rotate(-10deg'},
 ]
-
+const fistDownTime = {
+    duration: 500,
+    fill: 'forwards',
+    easing: 'ease-out'
+}
+const fistDownTimeFast = {
+    duration: 100,
+    fill: 'forwards',
+    easing: 'ease-in'
+}
 
 const palmHit = [
     { transform: 'rotate(0)'},
@@ -61,17 +71,8 @@ const palmTime = {
 
 
 
-const fistDownTime = {
-    duration: 500,
-    fill: 'forwards',
-    easing: 'ease-out'
-}
 
-const fistDownTimeFast = {
-    duration: 100,
-    fill: 'forwards',
-    easing: 'ease-in'
-}
+
 
 window.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
