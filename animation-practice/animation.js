@@ -3,21 +3,48 @@ const computerThumb = document.querySelector('#computer-thumb');
 const computerFist = document.querySelector('#computer-fist');
 const playerPalm = document.querySelector('#player-palm');
 const playerFist = document.querySelector('#player-fist');
+const scoreBoard = document.querySelector('.score-board')
 
+function getComputerChoice() {
+    let computerInt = Math.floor(Math.random() * 3);
+    computerChoice = computerInt === 0 ? 'Rock' 
+    : computerInt === 1 ? 'Paper'
+    : computerInt === 2 ? 'Scissors'
+    : console.log('Error');
+    console.log(computerChoice);
+    return computerChoice;
+}
+
+function getPlayerChoice () {
+    playerInput = prompt('Rock, Paper, or Scissors?');
+    playerInputLow = playerInput.toLowerCase();
+    if (playerInputLow === 'rock' 
+    || playerInputLow ==='paper' 
+    || playerInputLow === 'scissors') {
+        playerChoice = playerInputLow.charAt(0).toUpperCase() 
+        + playerInputLow.slice(1);
+        console.log(playerChoice);
+        return playerChoice;
+    }
+    else {
+        alert('Not a valid choice');
+        getPlayerChoice();
+    }
+} 
 const input = {};
 let i = 0;
 onkeydown = onkeyup = function (event) {
     input[event.key] = event.type == 'keydown';
-    if (input['Enter'] && input[' '] && i < 3 && !event.repeat) {
+    if (input['Shift'] && input[' '] && i < 3 && !event.repeat) {
         playerPalm.animate(palmHit, palmTime,);
         computerPalm.animate(palmHitMirror, palmTime);
         computerThumb.animate(palmHitMirror, palmTime);
         playerFist.animate(hitPalm, fistDownTimeFast);
         computerFist.animate(hitPalmMirror, fistDownTimeFast);
         i++;
-        delete input['Enter'];
+        delete input['Shift'];
     }
-    else if (input['Enter'] && input[' '] && i === 3) {
+    else if (input['Shift'] && input[' '] && i === 3) {
         console.log('hi');
         return i = 0;
     }
@@ -74,15 +101,15 @@ const palmTime = {
 
 
 
-window.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
+window.addEventListener('keydown', (event) => {
+    if (event.key === 'Shift') {
         playerFist.animate(raiseHand, raiseHandTime);
         computerFist.animate(raiseHandMirror, raiseHandTime);
     }
 })
 
 window.addEventListener('keyup', (event) => {
-    if (event.key === 'Enter') {
+    if (event.key == 'Shift') {
         playerFist.animate(hitPalm, fistDownTime);
         computerFist.animate(hitPalmMirror, fistDownTime);
     }
