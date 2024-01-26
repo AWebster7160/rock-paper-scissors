@@ -1,13 +1,15 @@
-const img = document.querySelector('#player-palm');
-const imgRight = document.querySelector('#computer-palm');
+const playerPalm = document.querySelector('#player-palm');
+const computerPalm = document.querySelector('#computer-palm');
+const computerThumb = document.querySelector('#computer-thumb')
 const playerFist = document.querySelector('#player-fist');
 const input = {};
 let i = 0;
 onkeydown = onkeyup = function (event) {
     input[event.key] = event.type == 'keydown';
     if (input['Enter'] && input[' '] && i < 3) {
-        img.animate(handHit, palmTime,);
-        imgRight.animate(handHitMirror, palmTime);
+        playerPalm.animate(handHit, palmTime,);
+        computerPalm.animate(handHitMirror, palmTime);
+        computerThumb.animate(handHitMirror, palmTime);
         playerFist.animate(hitHand, fistDownFast);
         i++
     }
@@ -19,9 +21,12 @@ onkeydown = onkeyup = function (event) {
 
 
 const raiseHand = [
-    {transform: 'rotate(-.08turn)'},
+    {transform: 'rotate(-29deg)'},
 ]
 
+const raiseHandMirror = [
+    {transform: 'rotate('}
+]
 const hitHand = [
     {transform: 'rotate(-.03turn'},
 ]
@@ -34,10 +39,10 @@ const handHit = [
 ];
 
 const handHitMirror = [
-    { transform: 'rotate(0turn)'},
-    {transform: 'rotate(-.03turn', easing: 'ease-out', offset: '.17'},
-    {transform: 'rotate(.01turn'},
-    { transform: 'rotate(0turn)'},
+    { transform: 'rotate(-10deg)'},
+    {transform: 'rotate(-21deg', easing: 'ease-out', offset: '.17'},
+    {transform: 'rotate(-6.4deg'},
+    { transform: 'rotate(-10deg)'},
 ];
 const palmTime = {
     duration: 800,
