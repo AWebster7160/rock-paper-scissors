@@ -3,8 +3,66 @@ const computerThumb = document.querySelector('#computer-thumb');
 const computerFist = document.querySelector('#computer-fist');
 const playerPalm = document.querySelector('#player-palm');
 const playerFist = document.querySelector('#player-fist');
-const scoreBoard = document.querySelector('.score-board')
+const scoreBoard = document.querySelector('.score-board');
+const choices = document.querySelector('.choices');
 
+
+const rockButton = document.createElement('img');
+rockButton.setAttribute('id', 'rock-button');
+rockButton.src = ('./img/rock.svg');
+
+const paperButton = document.createElement('img');
+paperButton.setAttribute('id', 'paper-button');
+paperButton.src = ('./img/paper.svg');
+
+const scissorsButton = document.createElement('img');
+scissorsButton.setAttribute('id', 'scissors-button');
+scissorsButton.src = ('./img/scissors.svg');
+
+choices.appendChild(rockButton);
+choices.appendChild(paperButton);
+choices.appendChild(scissorsButton);
+
+
+rockButton.addEventListener('mouseover', () => {
+    rockButton.animate(iconGrow, growTime);
+})
+rockButton.addEventListener('mouseout', () => {
+    rockButton.animate(iconShrink, shrinkTime);
+})
+paperButton.addEventListener('mouseover', () => {
+    paperButton.animate(iconGrow, growTime);
+})
+paperButton.addEventListener('mouseout', () => {
+    paperButton.animate(iconShrink, shrinkTime);
+})
+scissorsButton.addEventListener('mouseover', () => {
+    scissorsButton.animate(iconGrow, growTime);
+})
+scissorsButton.addEventListener('mouseout', () => {
+    scissorsButton.animate(iconShrink, shrinkTime);
+})
+
+scissorsButton.addEventListener('click', () => {
+    scissorsButton.style.visibility = 'hidden';
+})
+
+const iconGrow = [
+    {transform: 'scale(1.4)'}
+]
+const iconShrink = [
+    {transform: 'scale(1)'}
+]
+growTime = {
+    duration: 300,
+    fill: 'forwards'
+}
+
+shrinkTime = {
+    duration: 500,
+    fill: 'forwards'
+}
+   
 function getComputerChoice() {
     let computerInt = Math.floor(Math.random() * 3);
     computerChoice = computerInt === 0 ? 'Rock' 
@@ -45,6 +103,11 @@ onkeydown = onkeyup = function (event) {
         delete input['Shift'];
     }
     else if (input['Shift'] && input[' '] && i === 3) {
+        playerPalm.animate(palmHit, palmTime,);
+        computerPalm.animate(palmHitMirror, palmTime);
+        computerThumb.animate(palmHitMirror, palmTime);
+        playerFist.animate(hitPalm, fistDownTimeFast);
+        computerFist.animate(hitPalmMirror, fistDownTimeFast);
         console.log('hi');
         return i = 0;
     }

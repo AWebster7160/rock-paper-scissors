@@ -14,10 +14,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.score-board p {
-    margin-top: -20px;
+    margin-bottom: -20vh;
 }
 
 .bottom-hands {
@@ -97,40 +94,32 @@ body {
     z-index: 1;
 }
 
-#rock {
-    height: 20vh;
-    width: 20vw;
+#rock-button {
+   
+    height: 12vh;
+    width: 12vw; 
+    margin-top: 24vh;
+    margin-right: -4vw;
 }
-#scissors {
-    height: 20vh;
-    width: 20vw;
+#paper-button {
+    height: 12vh;
+    width: 12vw;
 }
-#paper {
-    height: 20vh;
-    width: 20vw;
+#scissors-button {
+    height: 12vh;
+    width: 12vw;
+    margin-top: 24vh;
+    margin-left: -4vw;
 }
-
 .choices {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-around;
+    margin-top: -14vh;
 }
 
- .choice {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 0;
-    width: 0%;
-    padding: 8%;
-    border-radius: 100%;
-    border-color: red;
-    background: none;
- }
 
-    
    
    
 
