@@ -109,3 +109,27 @@ body {
     height: 20vh;
     width: 20vw;
 }
+
+.choices {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+ .choice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 0;
+    width: 0%;
+    padding: 8%;
+    border-radius: 100%;
+    background: none;
+ }
+
+    
+   
+   
+
