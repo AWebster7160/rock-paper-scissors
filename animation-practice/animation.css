@@ -66,8 +66,8 @@ body {
 }
 
 #computer-palm {
-    height: 38vh;
-    width: 38vw;
+    height: 36vh;
+    width: 36vw;
     position: absolute;
     margin-right: -20vw;
     margin-bottom: -70vh;
@@ -77,8 +77,8 @@ body {
 }
 
 #computer-thumb {
-    height: 38vh;
-    width: 38vw;
+    height: 36vh;
+    width: 36vw;
     position: absolute;
     margin-right: -20vw;
     margin-bottom: -70vh;
@@ -88,8 +88,8 @@ body {
 }
 
 #computer-fist {
-    height: 46vh;
-    width: 46vw;
+    height: 44vh;
+    width: 44vw;
     position: absolute;
     top: 10vh;
     left: -4vw;
@@ -97,3 +97,15 @@ body {
     z-index: 1;
 }
 
+#rock {
+    height: 20vh;
+    width: 20vw;
+}
+#scissors {
+    height: 20vh;
+    width: 20vw;
+}
+#paper {
+    height: 20vh;
+    width: 20vw;
+}

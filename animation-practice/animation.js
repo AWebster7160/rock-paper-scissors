@@ -55,7 +55,7 @@ const raiseHand = [
     {transform: 'rotate(-18deg) translateY(-44px)'}
 ]
 const raiseHandMirror = [
-    {transform: 'rotate(12deg) translateY(-40px)'},
+    {transform: 'rotate(12deg) translateY(-50px)'},
 ]
 const raiseHandTime = {
     duration: 800,
