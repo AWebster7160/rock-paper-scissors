@@ -5,24 +5,49 @@ const playerPalm = document.querySelector('#player-palm');
 const playerFist = document.querySelector('#player-fist');
 const scoreBoard = document.querySelector('.score-board');
 const choices = document.querySelector('.choices');
+const addChoices = document.querySelector('#test-choices');
 
+
+
+
+const appear = [
+    {opacity: 0},
+    {opacity: 1}
+]
+
+const disappear = [
+    {opacity: 1},
+    {opacity: 0}
+]
+const appearTime = {
+    duration: 1400,
+    fill: 'forwards'
+}
+
+addChoices.onclick = () => {
+    rockButton.animate(appear, appearTime);
+    paperButton.animate(appear, appearTime);
+    scissorsButton.animate(appear, appearTime);
+} 
 
 const rockButton = document.createElement('img');
 rockButton.setAttribute('id', 'rock-button');
 rockButton.src = ('./img/rock.svg');
+rockButton.style.opacity=0;
 
 const paperButton = document.createElement('img');
 paperButton.setAttribute('id', 'paper-button');
 paperButton.src = ('./img/paper.svg');
+paperButton.style.opacity=0;
 
 const scissorsButton = document.createElement('img');
 scissorsButton.setAttribute('id', 'scissors-button');
 scissorsButton.src = ('./img/scissors.svg');
+scissorsButton.style.opacity=0;
 
 choices.appendChild(rockButton);
 choices.appendChild(paperButton);
 choices.appendChild(scissorsButton);
-
 
 rockButton.addEventListener('mouseover', () => {
     rockButton.animate(iconGrow, growTime);
@@ -43,10 +68,15 @@ scissorsButton.addEventListener('mouseout', () => {
     scissorsButton.animate(iconShrink, shrinkTime);
 })
 
-scissorsButton.addEventListener('click', () => {
-    scissorsButton.style.visibility = 'hidden';
+rockButton.addEventListener('click', () => {
+    rockButton.animate(disappear, appearTime)
 })
-
+paperButton.addEventListener('click', () => {
+    paperButton.animate(disappear, appearTime)
+})
+scissorsButton.addEventListener('click', () => {
+    scissorsButton.animate(disappear, appearTime)
+})
 const iconGrow = [
     {transform: 'scale(1.4)'}
 ]
@@ -94,7 +124,7 @@ let i = 0;
 onkeydown = onkeyup = function (event) {
     input[event.key] = event.type == 'keydown';
     if (input['Shift'] && input[' '] && i < 3 && !event.repeat) {
-        playerPalm.animate(palmHit, palmTime,);
+        playerPalm.animate(palmHit, palmTime);
         computerPalm.animate(palmHitMirror, palmTime);
         computerThumb.animate(palmHitMirror, palmTime);
         playerFist.animate(hitPalm, fistDownTimeFast);
