@@ -105,6 +105,7 @@ paperButton.addEventListener('click', () => {
     paperButton.animate(disappear, fadeTime);
     scissorsButton.animate(disappear, fadeTime);
     choices.appendChild(buttonCover);
+    buttonCover.style.display = 'revert';
     setTimeout(() => {
     rockButton.style.display = 'none';
     paperButton.style.display = 'none';
@@ -120,6 +121,7 @@ scissorsButton.addEventListener('click', () => {
     paperButton.animate(disappear, fadeTime);
     scissorsButton.animate(disappear, fadeTime);
     choices.appendChild(buttonCover);
+    buttonCover.style.display = 'revert';
     setTimeout(() => {
     rockButton.style.display = 'none';
     paperButton.style.display = 'none';
