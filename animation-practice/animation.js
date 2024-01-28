@@ -11,6 +11,7 @@ buttonCover.setAttribute('id', 'cover');
 let computerChoice;
 let playerScore;
 let computerScore;
+let playerChoice = '';
 
 
 
@@ -101,7 +102,7 @@ rockButton.addEventListener('click', () => {
     buttonCover.style.display = 'none';
     }, 1400);
     console.log(playerChoice);
-    playRound();
+    return playerChoice;
 })
 paperButton.addEventListener('click', () => {
     playerChoice = 1;
@@ -151,6 +152,38 @@ shrinkTime = {
     duration: 500,
     fill: 'forwards'
 }
+
+const input = {};
+let i = 0;
+onkeydown = onkeyup = function (event) {
+    input[event.key] = event.type == 'keydown';
+    if (input['Shift'] && input[' '] && i < 3 && !event.repeat) {
+        playerPalm.animate(palmHit, palmTime);
+        computerPalm.animate(palmHitMirror, palmTime);
+        computerThumb.animate(palmHitMirror, palmTime);
+        playerFist.animate(hitPalm, fistDownTimeFast);
+        computerFist.animate(hitPalmMirror, fistDownTimeFast);
+        i++;
+        delete input['Shift'];
+    }
+    else if (input['Shift'] && input[' '] && i === 3 && playerChoice === 0 || playerChoice === 1 || playerChoice === 2) {
+        playerPalm.animate(palmHit, palmTime,);
+        computerPalm.animate(palmHitMirror, palmTime);
+        computerThumb.animate(palmHitMirror, palmTime);
+        playerFist.animate(hitPalm, fistDownTimeFast);
+        computerFist.animate(hitPalmMirror, fistDownTimeFast);
+        setTimeout( () => {playRound()}, 400);
+        return i = 0;
+    }
+    else if (input['Shift'] && input[' '] && i === 3 && playerChoice =='') {
+        playerPalm.animate(palmHit, palmTime,);
+        computerPalm.animate(palmHitMirror, palmTime);
+        computerThumb.animate(palmHitMirror, palmTime);
+        playerFist.animate(hitPalm, fistDownTimeFast);
+        computerFist.animate(hitPalmMirror, fistDownTimeFast);
+        return i = 0;
+    }
+}
 function getComputerChoice() {
     computerChoice = Math.floor(Math.random() * 3);
     return computerChoice;
@@ -176,30 +209,7 @@ function playRound() {
     console.log(computerScore + ' ' + playerScore);
 }
 
-const input = {};
-let i = 0;
-onkeydown = onkeyup = function (event) {
-    input[event.key] = event.type == 'keydown';
-    if (input['Shift'] && input[' '] && i < 3 && !event.repeat) {
-        playerPalm.animate(palmHit, palmTime);
-        computerPalm.animate(palmHitMirror, palmTime);
-        computerThumb.animate(palmHitMirror, palmTime);
-        playerFist.animate(hitPalm, fistDownTimeFast);
-        computerFist.animate(hitPalmMirror, fistDownTimeFast);
-        i++;
-        delete input['Shift'];
-    }
-    else if (input['Shift'] && input[' '] && i === 3) {
-        playerPalm.animate(palmHit, palmTime,);
-        computerPalm.animate(palmHitMirror, palmTime);
-        computerThumb.animate(palmHitMirror, palmTime);
-        playerFist.animate(hitPalm, fistDownTimeFast);
-        computerFist.animate(hitPalmMirror, fistDownTimeFast);
-        console.log('hi');
-        return i = 0;
-    }
-    
-}
+
 
 const raiseHand = [
     {transform: 'rotate(-18deg) translateY(-44px)'}
