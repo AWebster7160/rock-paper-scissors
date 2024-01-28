@@ -9,6 +9,11 @@ const addChoices = document.querySelector('#test-choices');
 
 
 
+addChoices.onclick = () => {
+    rockButton.animate(appear, fadeTime);
+    paperButton.animate(appear, fadeTime);
+    scissorsButton.animate(appear, fadeTime);
+} 
 
 const appear = [
     {opacity: 0},
@@ -19,16 +24,22 @@ const disappear = [
     {opacity: 1},
     {opacity: 0}
 ]
-const appearTime = {
+
+/* for tmr, trying to get this to increase in size, then fade out I want a slow (1attime) fade in 
+at game start, then each round fade in all together*/
+const disappearChoice = [
+    {transform: 'scale(3)'},
+    
+]
+
+const fadeTime = {
     duration: 1400,
     fill: 'forwards'
 }
-
-addChoices.onclick = () => {
-    rockButton.animate(appear, appearTime);
-    paperButton.animate(appear, appearTime);
-    scissorsButton.animate(appear, appearTime);
-} 
+const fadeTimeDelay = {
+    duration: 1400,
+    fill: 'forwards'
+}
 
 const rockButton = document.createElement('img');
 rockButton.setAttribute('id', 'rock-button');
@@ -69,14 +80,25 @@ scissorsButton.addEventListener('mouseout', () => {
 })
 
 rockButton.addEventListener('click', () => {
-    rockButton.animate(disappear, appearTime)
+    playerChoice = 0;
+    rockButton.animate(disappear, fadeTime);
+    paperButton.animate(disappear, fadeTime);
+    scissorsButton.animate(disappear, fadeTime);
+    setTimeout(() => {
+    rockButton.style.display = 'none';
+    paperButton.style.display = 'none';
+    scissorsButton.style.display = 'none';
+    }, 1400);
+    console.log(playerChoice);
+    return playerChoice;
 })
 paperButton.addEventListener('click', () => {
-    paperButton.animate(disappear, appearTime)
+    paperButton.animate(disappear, fadeTime)
 })
 scissorsButton.addEventListener('click', () => {
-    scissorsButton.animate(disappear, appearTime)
+    scissorsButton.animate(disappear, fadeTime)
 })
+
 const iconGrow = [
     {transform: 'scale(1.4)'}
 ]
