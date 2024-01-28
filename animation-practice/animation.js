@@ -75,6 +75,10 @@ rockButton.addEventListener('click', () => {
     rockButton.animate(disappearRock, fadeTimeDelay);
     rockButton.removeEventListener('mouseover', rockOver, false);
     rockButton.removeEventListener('mouseout', rockOut, false);
+    paperButton.removeEventListener('mouseover', paperOver, false);
+    paperButton.removeEventListener('mouseout', paperOut, false);
+    scissorsButton.removeEventListener('mouseover', scissorsOver, false);
+    scissorsButton.removeEventListener('mouseout', scissorsOut, false);
     paperButton.animate(disappear, fadeTime);
     scissorsButton.animate(disappear, fadeTime);
     choices.appendChild(buttonCover);
@@ -96,6 +100,12 @@ paperButton.addEventListener('click', () => {
     rockButton.animate(disappear, fadeTime);
     paperButton.animate(disappear, fadeTime);
     scissorsButton.animate(disappear, fadeTime);
+    rockButton.removeEventListener('mouseover', rockOver, false);
+    rockButton.removeEventListener('mouseout', rockOut, false);
+    paperButton.removeEventListener('mouseover', paperOver, false);
+    paperButton.removeEventListener('mouseout', paperOut, false);
+    scissorsButton.removeEventListener('mouseover', scissorsOver, false);
+    scissorsButton.removeEventListener('mouseout', scissorsOut, false);
     choices.appendChild(buttonCover);
     buttonCover.style.display = 'revert';
     setTimeout(() => {
@@ -112,6 +122,12 @@ scissorsButton.addEventListener('click', () => {
     rockButton.animate(disappear, fadeTime);
     paperButton.animate(disappear, fadeTime);
     scissorsButton.animate(disappear, fadeTime);
+    rockButton.removeEventListener('mouseover', rockOver, false);
+    rockButton.removeEventListener('mouseout', rockOut, false);
+    paperButton.removeEventListener('mouseover', paperOver, false);
+    paperButton.removeEventListener('mouseout', paperOut, false);
+    scissorsButton.removeEventListener('mouseover', scissorsOver, false);
+    scissorsButton.removeEventListener('mouseout', scissorsOut, false);
     choices.appendChild(buttonCover);
     buttonCover.style.display = 'revert';
     setTimeout(() => {
@@ -123,7 +139,6 @@ scissorsButton.addEventListener('click', () => {
     console.log(playerChoice);
     return playerChoice;
 })
-
 const iconGrow = [
     {transform: 'scale(1.4)'}
 ]
@@ -138,33 +153,30 @@ shrinkTime = {
     duration: 500,
     fill: 'forwards'
 }
-
-
-
-
 rockButton.addEventListener('mouseover', rockOver);
 function rockOver() {
     rockButton.animate(iconGrow, growTime);
 }
-
 rockButton.addEventListener('mouseout', rockOut);
 function rockOut() {
     rockButton.animate(iconShrink, shrinkTime);
 }
-
-paperButton.addEventListener('mouseover', () => {
+paperButton.addEventListener('mouseover', paperOver);
+function paperOver() {
     paperButton.animate(iconGrow, growTime);
-})
-paperButton.addEventListener('mouseout', () => {
+}
+paperButton.addEventListener('mouseout', paperOut)
+function paperOut() {
     paperButton.animate(iconShrink, shrinkTime);
-})
-scissorsButton.addEventListener('mouseover', () => {
+}
+scissorsButton.addEventListener('mouseover', scissorsOver);
+function scissorsOver() {
     scissorsButton.animate(iconGrow, growTime);
-})
-scissorsButton.addEventListener('mouseout', () => {
+}
+scissorsButton.addEventListener('mouseout', scissorsOut);
+function scissorsOut() {
     scissorsButton.animate(iconShrink, shrinkTime);
-})
-
+}
 
 const input = {};
 let i = 0;
