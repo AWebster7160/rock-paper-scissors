@@ -14,7 +14,7 @@ let computerScore;
 let playerChoice = '';
 
 
-
+/* needs to be inside function instead of button, so I can call each round */
 addChoices.onclick = () => {
     rockButton.style.display = 'revert';
     paperButton.style.display = 'revert';
@@ -34,21 +34,18 @@ const appear = [
     {opacity: 0},
     {opacity: 1}
 ]
-
 const disappear = [
     {opacity: 1},
     {opacity: 0}
 ]
-
 const revertSize = [
     {transform: 'scale(1)'},
 ]
 /* for tmr, trying to get this to increase in size, then fade out I want a slow (1at a time) fade in 
 at game start, then each round fade in all together*/
-const disappearRock = [
+const chooseRock = [
     {transform: 'scale(2.5) translateY(-2vw) translateX(5vh)'},
 ]
-
 const fadeTime = {
     duration: 300,
     fill: 'forwards'
@@ -58,7 +55,7 @@ const fadeTimeSlow = {
     fill: 'forwards'
 }
 const fadeTimeDelay = {
-    delay: 400,
+    delay: 1600,
     duration: 1000,
     fill: 'forwards'
 }
@@ -87,7 +84,7 @@ scissorsButton.style.display = 'none';
 
 rockButton.addEventListener('click', () => {
     playerChoice = 0;
-    rockButton.animate(disappearRock, fadeTimeSlow);
+    rockButton.animate(chooseRock, fadeTimeSlow);
     rockButton.removeEventListener('mouseover', rockOver, false);
     rockButton.removeEventListener('mouseout', rockOut, false);
     paperButton.removeEventListener('mouseover', paperOver, false);
@@ -99,7 +96,7 @@ rockButton.addEventListener('click', () => {
     choices.appendChild(buttonCover);
     buttonCover.style.display = 'revert';
     setTimeout(() => {
-        rockButton.animate(disappear, fadeTime);
+        rockButton.animate(disappear, fadeTimeSlow);
         rockButton.animate(revertSize, fadeTimeDelay);
     }, 1600);
     setTimeout(() => {
@@ -107,14 +104,14 @@ rockButton.addEventListener('click', () => {
         buttonCover.style.display = 'none';
         paperButton.style.display = 'none';
         scissorsButton.style.display = 'none';
-        }, 5400);
+    }, 3200);
     console.log(playerChoice);
     return playerChoice;
 })
 paperButton.addEventListener('click', () => {
     playerChoice = 1;
+    paperButton.animate(choosePaper, fadeTimeSlow);
     rockButton.animate(disappear, fadeTime);
-    paperButton.animate(disappear, fadeTime);
     scissorsButton.animate(disappear, fadeTime);
     rockButton.removeEventListener('mouseover', rockOver, false);
     rockButton.removeEventListener('mouseout', rockOut, false);
@@ -125,36 +122,46 @@ paperButton.addEventListener('click', () => {
     choices.appendChild(buttonCover);
     buttonCover.style.display = 'revert';
     setTimeout(() => {
-        rockButton.style.display = 'none';
-        paperButton.style.display = 'none';
-        scissorsButton.style.display = 'none';
-    buttonCover.style.display = 'none'
-    }, 1400);
-    console.log(playerChoice);
-    return playerChoice;
-})
-scissorsButton.addEventListener('click', () => {
-    playerChoice = 2;
-    rockButton.animate(disappear, fadeTime);
-    paperButton.animate(disappear, fadeTime);
-    scissorsButton.animate(disappear, fadeTime);
-    rockButton.removeEventListener('mouseover', rockOver, false);
-    rockButton.removeEventListener('mouseout', rockOut, false);
-    paperButton.removeEventListener('mouseover', paperOver, false);
-    paperButton.removeEventListener('mouseout', paperOut, false);
-    scissorsButton.removeEventListener('mouseover', scissorsOver, false);
-    scissorsButton.removeEventListener('mouseout', scissorsOut, false);
-    choices.appendChild(buttonCover);
-    buttonCover.style.display = 'revert';
+        paperButton.animate(disappear, fadeTimeSlow);
+        paperButton.animate(revertSize, fadeTimeDelay);
+    }, 1600);
     setTimeout(() => {
         rockButton.style.display = 'none';
         paperButton.style.display = 'none';
         scissorsButton.style.display = 'none';
         buttonCover.style.display = 'none'
-    }, 1400);
+    }, 3200);
     console.log(playerChoice);
     return playerChoice;
 })
+scissorsButton.addEventListener('click', () => {
+    playerChoice = 2;
+    scissorsButton.animate(chooseScissors, fadeTimeSlow);
+    rockButton.animate(disappear, fadeTime);
+    paperButton.animate(disappear, fadeTime);
+    
+    rockButton.removeEventListener('mouseover', rockOver, false);
+    rockButton.removeEventListener('mouseout', rockOut, false);
+    paperButton.removeEventListener('mouseover', paperOver, false);
+    paperButton.removeEventListener('mouseout', paperOut, false);
+    scissorsButton.removeEventListener('mouseover', scissorsOver, false);
+    scissorsButton.removeEventListener('mouseout', scissorsOut, false);
+    choices.appendChild(buttonCover);
+    buttonCover.style.display = 'revert';
+    setTimeout(() => {
+        scissorsButton.animate(disappear, fadeTimeSlow);
+        scissorsButton.animate(revertSize, fadeTimeDelay);
+    }, 1600);
+    setTimeout(() => {
+        rockButton.style.display = 'none';
+        paperButton.style.display = 'none';
+        scissorsButton.style.display = 'none';
+        buttonCover.style.display = 'none'
+    }, 3200);
+    console.log(playerChoice);
+    return playerChoice;
+})
+
 const iconGrow = [
     {transform: 'scale(1.4)'}
 ]
@@ -169,6 +176,7 @@ shrinkTime = {
     duration: 500,
     fill: 'forwards'
 }
+
 rockButton.addEventListener('mouseover', rockOver);
 function rockOver() {
     rockButton.animate(iconGrow, growTime);
@@ -214,6 +222,7 @@ onkeydown = onkeyup = function (event) {
         playerFist.animate(hitPalm, fistDownTimeFast);
         computerFist.animate(hitPalmMirror, fistDownTimeFast);
         setTimeout( () => {playRound()}, 400);
+        playerChoice = '';
         return i = 0;
     }
 }
@@ -225,7 +234,6 @@ function playRound() {
     getComputerChoice();
     if (computerChoice === playerChoice) {
         alert('It\'s a tie! We both picked ' + playerChoice + '!');
-        /* This restarts playRound()*/
     }
     else if (computerChoice === 0 && playerChoice === 2
     || computerChoice === 1 && playerChoice === 0
@@ -233,7 +241,6 @@ function playRound() {
         computerScore = ++computerScore;
         alert('You lose this round :(');
     }
-    /* Since all lose conditions are explicitly stated as well as tie, only other options are win */
     else {
         playerScore = ++playerScore;
         console.log(playerScore)
@@ -241,7 +248,6 @@ function playRound() {
     }
     console.log(computerScore + ' ' + playerScore);
 }
-
 
 
 const raiseHand = [
