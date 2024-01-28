@@ -44,13 +44,20 @@ const revertSize = [
 /* for tmr, trying to get this to increase in size, then fade out I want a slow (1at a time) fade in 
 at game start, then each round fade in all together*/
 const chooseRock = [
-    {transform: 'scale(2.5) translateY(-2vw) translateX(5vh)'},
+    {transform: 'scale(2.2) translateY(-2vw) translateX(5vh)'},
 ]
 const choosePaper = [
-    {transform: 'scale(2.5) translateY(2vw)'},
+    {transform: 'scale(2.2) translateY(2vw)'},
+]
+const chooseScissors = [
+    {transform: 'scale(2.2) translateY(-2vw) translateX(-5vh)'},
 ]
 const fadeTime = {
     duration: 300,
+    fill: 'forwards'
+}
+const controlFadeTime = {
+    duration: 600,
     fill: 'forwards'
 }
 const fadeTimeSlow = {
@@ -86,6 +93,13 @@ rockButton.style.display = 'none';
 paperButton.style.display = 'none';
 scissorsButton.style.display = 'none';
 
+const controls = document.createElement('img');
+controls.setAttribute('id', 'controls');
+controls.src = ('./img/controls.svg');
+choices.appendChild(controls);
+controls.style.display = 'none';
+controls.style.opacity=0;
+
 rockButton.addEventListener('click', () => {
     playerChoice = 0;
     rockButton.animate(chooseRock, fadeTimeSlow);
@@ -108,8 +122,9 @@ rockButton.addEventListener('click', () => {
         buttonCover.style.display = 'none';
         paperButton.style.display = 'none';
         scissorsButton.style.display = 'none';
+        controls.style.display= 'revert';
+        controls.animate(appear, fadeTimeSlow);
     }, 4000);
-    console.log(playerChoice);
     return playerChoice;
 })
 paperButton.addEventListener('click', () => {
@@ -133,7 +148,9 @@ paperButton.addEventListener('click', () => {
         rockButton.style.display = 'none';
         paperButton.style.display = 'none';
         scissorsButton.style.display = 'none';
-        buttonCover.style.display = 'none'
+        buttonCover.style.display = 'none';
+        controls.style.display= 'revert';
+        controls.animate(appear, fadeTimeSlow);
     }, 4000);
     console.log(playerChoice);
     return playerChoice;
@@ -160,7 +177,9 @@ scissorsButton.addEventListener('click', () => {
         rockButton.style.display = 'none';
         paperButton.style.display = 'none';
         scissorsButton.style.display = 'none';
-        buttonCover.style.display = 'none'
+        buttonCover.style.display = 'none';
+        controls.style.display= 'revert';
+        controls.animate(appear, fadeTimeSlow);
     }, 4000);
     console.log(playerChoice);
     return playerChoice;
@@ -216,6 +235,10 @@ onkeydown = onkeyup = function (event) {
         computerThumb.animate(palmHitMirror, palmTime);
         playerFist.animate(hitPalm, fistDownTimeFast);
         computerFist.animate(hitPalmMirror, fistDownTimeFast);
+        controls.animate(disappear, controlFadeTime);
+        setTimeout( () => {
+        controls.style.display = 'none';
+        }, 600);
         i++;
         delete input['Shift'];
     }
