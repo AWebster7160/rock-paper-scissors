@@ -6,7 +6,8 @@ const playerFist = document.querySelector('#player-fist');
 const scoreBoard = document.querySelector('.score-board');
 const choices = document.querySelector('.choices');
 const addChoices = document.querySelector('#test-choices');
-
+const buttonCover = document.createElement('div');
+buttonCover.setAttribute('id', 'cover')
 
 
 addChoices.onclick = () => {
@@ -84,6 +85,7 @@ rockButton.addEventListener('click', () => {
     rockButton.animate(disappear, fadeTime);
     paperButton.animate(disappear, fadeTime);
     scissorsButton.animate(disappear, fadeTime);
+    choices.appendChild(buttonCover);
     setTimeout(() => {
     rockButton.style.display = 'none';
     paperButton.style.display = 'none';

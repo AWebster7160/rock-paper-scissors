@@ -124,5 +124,12 @@ body {
     z-index: 1;
 }
    
+#cover {
+    min-height: 40vh;
+    min-width: 40vw;
+    margin-top: -10vh;
+    margin-left: -40vw;
+    z-index: 2;
+}
    
 
