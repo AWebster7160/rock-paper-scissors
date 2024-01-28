@@ -19,6 +19,12 @@ addChoices.onclick = () => {
     rockButton.style.display = 'revert';
     paperButton.style.display = 'revert';
     scissorsButton.style.display = 'revert';
+    rockButton.addEventListener('mouseover', rockOver);
+    rockButton.addEventListener('mouseout', rockOut);
+    paperButton.addEventListener('mouseover', paperOver);
+    paperButton.addEventListener('mouseout', paperOut);
+    scissorsButton.addEventListener('mouseover', scissorsOver);
+    scissorsButton.addEventListener('mouseout', scissorsOut);
     rockButton.animate(appear, fadeTime);
     paperButton.animate(appear, fadeTime);
     scissorsButton.animate(appear, fadeTime);
@@ -34,18 +40,27 @@ const disappear = [
     {opacity: 0}
 ]
 
+const revertSize = [
+    {transform: 'scale(1)'},
+]
 /* for tmr, trying to get this to increase in size, then fade out I want a slow (1at a time) fade in 
 at game start, then each round fade in all together*/
 const disappearRock = [
-    {transform: 'scale(3)'},
+    {transform: 'scale(2.5) translateY(-2vw) translateX(5vh)'},
 ]
+
 const fadeTime = {
-    duration: 1400,
+    duration: 300,
+    fill: 'forwards'
+}
+const fadeTimeSlow = {
+    duration: 1600,
     fill: 'forwards'
 }
 const fadeTimeDelay = {
-    duration: 4400,
-    fill: 'both'
+    delay: 400,
+    duration: 1000,
+    fill: 'forwards'
 }
 
 const rockButton = document.createElement('img');
@@ -72,7 +87,7 @@ scissorsButton.style.display = 'none';
 
 rockButton.addEventListener('click', () => {
     playerChoice = 0;
-    rockButton.animate(disappearRock, fadeTimeDelay);
+    rockButton.animate(disappearRock, fadeTimeSlow);
     rockButton.removeEventListener('mouseover', rockOver, false);
     rockButton.removeEventListener('mouseout', rockOut, false);
     paperButton.removeEventListener('mouseover', paperOver, false);
@@ -84,13 +99,14 @@ rockButton.addEventListener('click', () => {
     choices.appendChild(buttonCover);
     buttonCover.style.display = 'revert';
     setTimeout(() => {
-        paperButton.style.display = 'none';
-        scissorsButton.style.display = 'none';
-        
-    }, 1400);
+        rockButton.animate(disappear, fadeTime);
+        rockButton.animate(revertSize, fadeTimeDelay);
+    }, 1600);
     setTimeout(() => {
         rockButton.style.display = 'none';
         buttonCover.style.display = 'none';
+        paperButton.style.display = 'none';
+        scissorsButton.style.display = 'none';
         }, 5400);
     console.log(playerChoice);
     return playerChoice;
