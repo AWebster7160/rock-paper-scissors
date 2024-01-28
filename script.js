@@ -38,8 +38,6 @@ function getPlayerChoice () {
     }
 } 
 
-/* I want a global variable to track the score so I can stop when one player reaches 3 wins */
-
 function playRound() {
     getComputerChoice();
     getPlayerChoice();
@@ -48,7 +46,6 @@ function playRound() {
         alert('It\'s a tie! We both picked ' + playerChoice + '!');
         /* This restarts playRound()*/
         playRound();
-        
     }
     else if (computerChoice === 'Rock' && playerChoice === 'Scissors'
     || computerChoice === 'Paper' && playerChoice === 'Rock'

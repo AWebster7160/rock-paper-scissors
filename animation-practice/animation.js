@@ -36,11 +36,9 @@ const disappear = [
 
 /* for tmr, trying to get this to increase in size, then fade out I want a slow (1at a time) fade in 
 at game start, then each round fade in all together*/
-const disappearChoice = [
-    {transform: 'scale(3)'},
-    
+const disappearRock = [
+    {transform: 'scale(144)'},
 ]
-
 const fadeTime = {
     duration: 1400,
     fill: 'forwards'
@@ -68,29 +66,14 @@ scissorsButton.style.opacity=0;
 choices.appendChild(rockButton);
 choices.appendChild(paperButton);
 choices.appendChild(scissorsButton);
-
-rockButton.addEventListener('mouseover', () => {
-    rockButton.animate(iconGrow, growTime);
-})
-rockButton.addEventListener('mouseout', () => {
-    rockButton.animate(iconShrink, shrinkTime);
-})
-paperButton.addEventListener('mouseover', () => {
-    paperButton.animate(iconGrow, growTime);
-})
-paperButton.addEventListener('mouseout', () => {
-    paperButton.animate(iconShrink, shrinkTime);
-})
-scissorsButton.addEventListener('mouseover', () => {
-    scissorsButton.animate(iconGrow, growTime);
-})
-scissorsButton.addEventListener('mouseout', () => {
-    scissorsButton.animate(iconShrink, shrinkTime);
-})
+rockButton.style.display = 'none';
+paperButton.style.display = 'none';
+scissorsButton.style.display = 'none';
 
 rockButton.addEventListener('click', () => {
     playerChoice = 0;
-    rockButton.animate(disappear, fadeTime);
+    rockButton.animate(disappearRock, fadeTime);
+    rockButton.removeEventListener('mouseout', rockOut, false);
     paperButton.animate(disappear, fadeTime);
     scissorsButton.animate(disappear, fadeTime);
     choices.appendChild(buttonCover);
@@ -147,11 +130,30 @@ growTime = {
     duration: 300,
     fill: 'forwards'
 }
-
 shrinkTime = {
     duration: 500,
     fill: 'forwards'
 }
+
+rockButton.addEventListener('mouseover', () => {
+    rockButton.animate(iconGrow, growTime);
+})
+const rockOut = rockButton.addEventListener('mouseout', () => {
+    rockButton.animate(iconShrink, shrinkTime);
+})
+paperButton.addEventListener('mouseover', () => {
+    paperButton.animate(iconGrow, growTime);
+})
+paperButton.addEventListener('mouseout', () => {
+    paperButton.animate(iconShrink, shrinkTime);
+})
+scissorsButton.addEventListener('mouseover', () => {
+    scissorsButton.animate(iconGrow, growTime);
+})
+scissorsButton.addEventListener('mouseout', () => {
+    scissorsButton.animate(iconShrink, shrinkTime);
+})
+
 
 const input = {};
 let i = 0;
