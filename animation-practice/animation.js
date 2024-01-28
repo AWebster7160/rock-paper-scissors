@@ -157,7 +157,7 @@ const input = {};
 let i = 0;
 onkeydown = onkeyup = function (event) {
     input[event.key] = event.type == 'keydown';
-    if (input['Shift'] && input[' '] && i < 3 && !event.repeat) {
+    if (input['Shift'] && input[' '] && i < 3 && !event.repeat && playerChoice === 0 || playerChoice === 1 || playerChoice === 2) {
         playerPalm.animate(palmHit, palmTime);
         computerPalm.animate(palmHitMirror, palmTime);
         computerThumb.animate(palmHitMirror, palmTime);
@@ -173,14 +173,6 @@ onkeydown = onkeyup = function (event) {
         playerFist.animate(hitPalm, fistDownTimeFast);
         computerFist.animate(hitPalmMirror, fistDownTimeFast);
         setTimeout( () => {playRound()}, 400);
-        return i = 0;
-    }
-    else if (input['Shift'] && input[' '] && i === 3 && playerChoice =='') {
-        playerPalm.animate(palmHit, palmTime,);
-        computerPalm.animate(palmHitMirror, palmTime);
-        computerThumb.animate(palmHitMirror, palmTime);
-        playerFist.animate(hitPalm, fistDownTimeFast);
-        computerFist.animate(hitPalmMirror, fistDownTimeFast);
         return i = 0;
     }
 }
