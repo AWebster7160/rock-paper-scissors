@@ -46,16 +46,20 @@ at game start, then each round fade in all together*/
 const chooseRock = [
     {transform: 'scale(2.5) translateY(-2vw) translateX(5vh)'},
 ]
+const choosePaper = [
+    {transform: 'scale(2.5) translateY(2vw)'},
+]
 const fadeTime = {
     duration: 300,
     fill: 'forwards'
 }
 const fadeTimeSlow = {
-    duration: 1600,
+    delay: 600,
+    duration: 1800,
     fill: 'forwards'
 }
 const fadeTimeDelay = {
-    delay: 1600,
+    delay: 2400,
     duration: 1000,
     fill: 'forwards'
 }
@@ -104,7 +108,7 @@ rockButton.addEventListener('click', () => {
         buttonCover.style.display = 'none';
         paperButton.style.display = 'none';
         scissorsButton.style.display = 'none';
-    }, 3200);
+    }, 4000);
     console.log(playerChoice);
     return playerChoice;
 })
@@ -130,7 +134,7 @@ paperButton.addEventListener('click', () => {
         paperButton.style.display = 'none';
         scissorsButton.style.display = 'none';
         buttonCover.style.display = 'none'
-    }, 3200);
+    }, 4000);
     console.log(playerChoice);
     return playerChoice;
 })
@@ -157,7 +161,7 @@ scissorsButton.addEventListener('click', () => {
         paperButton.style.display = 'none';
         scissorsButton.style.display = 'none';
         buttonCover.style.display = 'none'
-    }, 3200);
+    }, 4000);
     console.log(playerChoice);
     return playerChoice;
 })
