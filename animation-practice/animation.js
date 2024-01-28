@@ -7,7 +7,11 @@ const scoreBoard = document.querySelector('.score-board');
 const choices = document.querySelector('.choices');
 const addChoices = document.querySelector('#test-choices');
 const buttonCover = document.createElement('div');
-buttonCover.setAttribute('id', 'cover')
+buttonCover.setAttribute('id', 'cover');
+let computerChoice;
+let playerScore;
+let computerScore;
+
 
 
 addChoices.onclick = () => {
@@ -29,7 +33,7 @@ const disappear = [
     {opacity: 0}
 ]
 
-/* for tmr, trying to get this to increase in size, then fade out I want a slow (1attime) fade in 
+/* for tmr, trying to get this to increase in size, then fade out I want a slow (1at a time) fade in 
 at game start, then each round fade in all together*/
 const disappearChoice = [
     {transform: 'scale(3)'},
@@ -97,7 +101,7 @@ rockButton.addEventListener('click', () => {
     buttonCover.style.display = 'none';
     }, 1400);
     console.log(playerChoice);
-    return playerChoice;
+    playRound();
 })
 paperButton.addEventListener('click', () => {
     playerChoice = 1;
@@ -147,33 +151,31 @@ shrinkTime = {
     duration: 500,
     fill: 'forwards'
 }
-   
 function getComputerChoice() {
-    let computerInt = Math.floor(Math.random() * 3);
-    computerChoice = computerInt === 0 ? 'Rock' 
-    : computerInt === 1 ? 'Paper'
-    : computerInt === 2 ? 'Scissors'
-    : console.log('Error');
-    console.log(computerChoice);
+    computerChoice = Math.floor(Math.random() * 3);
     return computerChoice;
+}   
+function playRound() {
+    getComputerChoice();
+    if (computerChoice === playerChoice) {
+        alert('It\'s a tie! We both picked ' + playerChoice + '!');
+        /* This restarts playRound()*/
+    }
+    else if (computerChoice === 0 && playerChoice === 2
+    || computerChoice === 1 && playerChoice === 0
+    || computerChoice === 2 && playerChoice === 1) {
+        computerScore = ++computerScore;
+        alert('You lose this round :(');
+    }
+    /* Since all lose conditions are explicitly stated as well as tie, only other options are win */
+    else {
+        playerScore = ++playerScore;
+        console.log(playerScore)
+        alert('You win this round :)');
+    }
+    console.log(computerScore + ' ' + playerScore);
 }
 
-function getPlayerChoice () {
-    playerInput = prompt('Rock, Paper, or Scissors?');
-    playerInputLow = playerInput.toLowerCase();
-    if (playerInputLow === 'rock' 
-    || playerInputLow ==='paper' 
-    || playerInputLow === 'scissors') {
-        playerChoice = playerInputLow.charAt(0).toUpperCase() 
-        + playerInputLow.slice(1);
-        console.log(playerChoice);
-        return playerChoice;
-    }
-    else {
-        alert('Not a valid choice');
-        getPlayerChoice();
-    }
-} 
 const input = {};
 let i = 0;
 onkeydown = onkeyup = function (event) {
