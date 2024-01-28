@@ -11,6 +11,9 @@ buttonCover.setAttribute('id', 'cover')
 
 
 addChoices.onclick = () => {
+    rockButton.style.display = 'revert';
+    paperButton.style.display = 'revert';
+    scissorsButton.style.display = 'revert';
     rockButton.animate(appear, fadeTime);
     paperButton.animate(appear, fadeTime);
     scissorsButton.animate(appear, fadeTime);
@@ -86,19 +89,45 @@ rockButton.addEventListener('click', () => {
     paperButton.animate(disappear, fadeTime);
     scissorsButton.animate(disappear, fadeTime);
     choices.appendChild(buttonCover);
+    buttonCover.style.display = 'revert';
     setTimeout(() => {
     rockButton.style.display = 'none';
     paperButton.style.display = 'none';
     scissorsButton.style.display = 'none';
+    buttonCover.style.display = 'none';
     }, 1400);
     console.log(playerChoice);
     return playerChoice;
 })
 paperButton.addEventListener('click', () => {
-    paperButton.animate(disappear, fadeTime)
+    playerChoice = 1;
+    rockButton.animate(disappear, fadeTime);
+    paperButton.animate(disappear, fadeTime);
+    scissorsButton.animate(disappear, fadeTime);
+    choices.appendChild(buttonCover);
+    setTimeout(() => {
+    rockButton.style.display = 'none';
+    paperButton.style.display = 'none';
+    scissorsButton.style.display = 'none';
+    buttonCover.style.display = 'none'
+    }, 1400);
+    console.log(playerChoice);
+    return playerChoice;
 })
 scissorsButton.addEventListener('click', () => {
-    scissorsButton.animate(disappear, fadeTime)
+    playerChoice = 2;
+    rockButton.animate(disappear, fadeTime);
+    paperButton.animate(disappear, fadeTime);
+    scissorsButton.animate(disappear, fadeTime);
+    choices.appendChild(buttonCover);
+    setTimeout(() => {
+    rockButton.style.display = 'none';
+    paperButton.style.display = 'none';
+    scissorsButton.style.display = 'none';
+    buttonCover.style.display = 'none'
+    }, 1400);
+    console.log(playerChoice);
+    return playerChoice;
 })
 
 const iconGrow = [
