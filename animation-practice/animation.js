@@ -12,8 +12,6 @@ let computerChoice;
 let playerScore;
 let computerScore;
 let playerChoice = '';
-
-
 /* needs to be inside function instead of button, so I can call each round */
 addChoices.onclick = () => {
     rockButton.style.display = 'revert';
@@ -159,8 +157,7 @@ scissorsButton.addEventListener('click', () => {
     playerChoice = 2;
     scissorsButton.animate(chooseScissors, fadeTimeSlow);
     rockButton.animate(disappear, fadeTime);
-    paperButton.animate(disappear, fadeTime);
-    
+    paperButton.animate(disappear, fadeTime);  
     rockButton.removeEventListener('mouseover', rockOver, false);
     rockButton.removeEventListener('mouseout', rockOut, false);
     paperButton.removeEventListener('mouseover', paperOver, false);
@@ -184,7 +181,6 @@ scissorsButton.addEventListener('click', () => {
     console.log(playerChoice);
     return playerChoice;
 })
-
 const iconGrow = [
     {transform: 'scale(1.4)'}
 ]
@@ -275,8 +271,6 @@ function playRound() {
     }
     console.log(computerScore + ' ' + playerScore);
 }
-
-
 const raiseHand = [
     {transform: 'rotate(-18deg) translateY(-44px)'}
 ]
@@ -304,7 +298,6 @@ const fistDownTimeFast = {
     fill: 'forwards',
     easing: 'ease-in'
 }
-
 const palmHit = [
     { transform: 'rotate(0)'},
     {transform: 'rotate(4deg)', easing: 'ease-out', offset: '.17'},
@@ -321,12 +314,6 @@ const palmTime = {
     duration: 800,
     delay: 100,
 }
-
-
-
-
-
-
 window.addEventListener('keydown', (event) => {
     if (event.key === 'Shift') {
         playerFist.animate(raiseHand, raiseHandTime);
