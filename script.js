@@ -555,11 +555,12 @@ function playRound() {
                 computerFive.animate(appear, fadeTime);
             }, 600);
             setTimeout(() => {
-                gameArea.animate(disappear, fadeTimeSlow);
+                scoreBoard.animate(disappear, fadeTimeSlow);
+                choices.animate(disappear, fadeTimeSlow);
                 bottomHands.animate(disappear, fadeTimeSlow);
             }, 1200);
             setTimeout(() => {
-                choices.appendChild(defeat);
+                gameArea.appendChild(defeat);
                 defeat.animate(appear, fadeTimeSlow);
             }, 2600);
         }
@@ -601,12 +602,13 @@ function playRound() {
                 playerFive.animate(appear, fadeTime);
             }, 600);
             setTimeout(() => {
-                gameArea.animate(disappear, fadeTimeSlow);
+                scoreBoard.animate(disappear, fadeTimeSlow);
+                choices.animate(disappear, fadeTimeSlow);
                 bottomHands.animate(disappear, fadeTimeSlow);
             }, 1200);
             setTimeout(() => {      
-            choices.appendChild(victory);
-            victory.animate(appear, fadeTimeSlow);
+                gameArea.appendChild(victory);
+                victory.animate(appear, fadeTimeSlow);
             }, 2600);
         }
 }
