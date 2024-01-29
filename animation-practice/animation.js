@@ -13,6 +13,19 @@ const playerScoreArea = document.querySelector('#player-score-area');
 const opponentScoreArea = document.querySelector('#opponent-score-area');
 const playerZero = document.querySelector('#you');
 const opponentZero = document.querySelector('#opponent');
+const gameArea = document.querySelector('.game-area');
+const bottomHands = document.querySelector('.bottom-hands');
+
+const victory = document.createElement('img');
+victory.src = ('./img/victory.svg');
+victory.setAttribute('id', 'victory');
+victory.style.opacity=0;
+const defeat = document.createElement('img');
+defeat.src = ('./img/defeat.svg');
+defeat.setAttribute('id', 'defeat');
+defeat.style.opacity=0;
+
+
 
 const playerOne = document.createElement('img');
 playerOne.src = ('./img/one.svg')
@@ -88,9 +101,9 @@ function buttonShow() {
     paperButton.addEventListener('mouseout', paperOut);
     scissorsButton.addEventListener('mouseover', scissorsOver);
     scissorsButton.addEventListener('mouseout', scissorsOut);
-    rockButton.animate(appear, fadeTimeSlow);
-    paperButton.animate(appear, fadeTimeSlow);
-    scissorsButton.animate(appear, fadeTimeSlow);
+    rockButton.animate(appear, fadeTimeSlower);
+    paperButton.animate(appear, fadeTimeSlower);
+    scissorsButton.animate(appear, fadeTimeSlower);
 }, 1000);
 }
 
@@ -114,19 +127,17 @@ function firstShow() {
         computerHands.style.visibility='visible';
         playerHands.animate(appear, fadeTimeSlower);
         computerHands.animate(appear, fadeTimeSlower)
-    }, 4000);
+    }, 5800);
     setTimeout(() => {
         scoreBoard.style.visibility='visible';
         scoreBoard.animate(appear, fadeTimeSlower);
-    }, 6000);
+    }, 7400);
 }
 
 /* needs to be inside function instead of button, so I can call each round */
 document.addEventListener('DOMContentLoaded', function() {
     firstShow();
 })
-
-
 
 const appear = [
     {opacity: 0},
@@ -405,7 +416,6 @@ onkeydown = onkeyup = function (event) {
         controls.style.display = 'none';
         getComputerChoice()
         setTimeout( () => {
-            
             if (playerChoice === 0) {
                 playerHands.appendChild(rockChoice);
                 rockChoice.style.display='revert';
@@ -503,20 +513,7 @@ function getComputerChoice() {
 }   
 
 function playRound() {
-    setTimeout(() => {
-    rockButton.style.display = 'revert';
-    paperButton.style.display = 'revert';
-    scissorsButton.style.display = 'revert';
-    rockButton.addEventListener('mouseover', rockOver);
-    rockButton.addEventListener('mouseout', rockOut);
-    paperButton.addEventListener('mouseover', paperOver);
-    paperButton.addEventListener('mouseout', paperOut);
-    scissorsButton.addEventListener('mouseover', scissorsOver);
-    scissorsButton.addEventListener('mouseout', scissorsOut);
-    rockButton.animate(appear, fadeTime);
-    paperButton.animate(appear, fadeTime);
-    scissorsButton.animate(appear, fadeTime);
-    }, 8000);
+    buttonShow();
     if (computerChoice === playerChoice) {
     }
     else if (computerChoice === 0 && playerChoice === 2
@@ -528,76 +525,89 @@ function playRound() {
             setTimeout(() => {
                 opponentZero.replaceWith(computerOne);
                 computerOne.animate(appear, fadeTime);
-            }, 400);
+            }, 600);
         }
         else if (computerScore === 2) {
             computerOne.animate(disappear, fadeTime);
             setTimeout(() => {
                 computerOne.replaceWith(computerTwo);
                 computerTwo.animate(appear, fadeTime);
-            }, 400);
+            }, 600);
         }
         else if (computerScore === 3) {
             computerTwo.animate(disappear, fadeTime);
             setTimeout(() => {
                 computerTwo.replaceWith(computerThree);
                 computerThree.animate(appear, fadeTime);
-            }, 400);
+            }, 600);
         }
         else if (computerScore === 4) {
             computerThree.animate(disappear, fadeTime);
             setTimeout(() => {
                 computerThree.replaceWith(computerFour);
                 computerFour.animate(appear, fadeTime);
-            }, 400);
+            }, 600);
         }
         else if (computerScore === 5) {
             computerFour.animate(disappear, fadeTime);
             setTimeout(() => {
                 computerFour.replaceWith(computerFive);
                 computerFive.animate(appear, fadeTime);
-            }, 400);
-            /* New timeout and then handle game end*/
+            }, 600);
+            setTimeout(() => {
+                gameArea.animate(disappear, fadeTimeSlow);
+                bottomHands.animate(disappear, fadeTimeSlow);
+            }, 1200);
+            setTimeout(() => {
+                choices.appendChild(defeat);
+                defeat.animate(appear, fadeTimeSlow);
+            }, 2600);
         }
     }
     else {
         playerScore = ++playerScore;
-        console.log(playerScore);
         if (playerScore === 1) {
             playerZero.animate(disappear, fadeTime);
             setTimeout(() => {
                 playerZero.replaceWith(playerOne);
                 playerOne.animate(appear, fadeTime);
-            }, 400);
+            }, 600);
         }
         else if(playerScore === 2) {
             playerOne.animate(disappear, fadeTime);
             setTimeout(() => {
                 playerOne.replaceWith(playerTwo);
                 playerTwo.animate(appear, fadeTime);
-            }, 400);
+            }, 600);
         }
         else if(playerScore === 3) {
             playerTwo.animate(disappear, fadeTime);
             setTimeout(() => {
                 playerTwo.replaceWith(playerThree);
                 playerThree.animate(appear, fadeTime);
-            }, 400);
+            }, 600);
         }
         else if(playerScore === 4) {
             playerThree.animate(disappear, fadeTime);
             setTimeout(() => {
                 playerThree.replaceWith(playerFour);
                 playerFour.animate(appear, fadeTime);
-            }, 400);
+            }, 600);
         }
         else if(playerScore === 5) {
             playerFour.animate(disappear, fadeTime);
             setTimeout(() => {
                 playerFour.replaceWith(playerFive);
                 playerFive.animate(appear, fadeTime);
-            }, 400);
-            /* New timeout and then handle game end*/
+            }, 600);
+            setTimeout(() => {
+                gameArea.animate(disappear, fadeTimeSlow);
+                bottomHands.animate(disappear, fadeTimeSlow);
+            }, 1200);
+            setTimeout(() => {      
+            choices.appendChild(victory);
+            victory.animate(appear, fadeTimeSlow);
+            }, 2600);
         }
 }
 }
