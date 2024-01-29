@@ -90,6 +90,15 @@ body {
     width: 12vw;
     top: 63vh;
 }
+#rock-choice-computer,
+    #paper-choice-computer,
+        #scissors-choice-computer {
+            position: absolute;
+            height: 13vh;
+            width: 13vw;
+            top: 32.5vh;
+            left: 1.5vw;
+        }
 .choices {
     display: flex;
     flex-direction: row;

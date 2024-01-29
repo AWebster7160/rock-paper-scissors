@@ -353,6 +353,7 @@ onkeydown = onkeyup = function (event) {
         computerFist.animate(disappear, fadeTimeSlow);
         playerFist.animate(disappear, fadeTimeSlow);
         controls.style.display = 'none';
+        getComputerChoice()
         setTimeout( () => {
             playerFist.style.display = 'none';
             if (playerChoice === 0) {
@@ -371,6 +372,24 @@ onkeydown = onkeyup = function (event) {
                 playerChoice = '';
             }
         }, 2400);
+        setTimeout( () => {
+            playerFist.style.display = 'none';
+            if (computerChoice === 0) {
+                computerHands.appendChild(rockChoiceComputer);
+                rockChoiceComputer.animate(appear, fadeTimeSlow);
+                computerChoice = '';
+            }
+            else if (computerChoice === 1) {
+                computerHands.appendChild(paperChoiceComputer);
+                paperChoiceComputer.animate(appear, fadeTimeSlow);
+                computerChoice = '';
+            }
+            else if (computerChoice === 2) {
+                computerHands.appendChild(scissorsChoiceComputer);
+                scissorsChoiceComputer.animate(appear, fadeTimeSlow);
+                computerChoice = '';
+            }
+        }, 2400);
         setTimeout( () => {playRound()}, 1200);
         return i = 0;
     }
@@ -381,7 +400,6 @@ function getComputerChoice() {
 }   
 
 function playRound() {
-    getComputerChoice();
     if (computerChoice === playerChoice) {
         alert('It\'s a tie! We both picked ' + playerChoice + '!');
     }
