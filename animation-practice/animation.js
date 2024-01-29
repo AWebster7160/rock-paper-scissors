@@ -1,17 +1,26 @@
+const computerHands = document.querySelector('.computer-hands');
 const computerPalm = document.querySelector('#computer-palm');
 const computerThumb = document.querySelector('#computer-thumb');
 const computerFist = document.querySelector('#computer-fist');
+const playerHands = document.querySelector('.player-hands');
 const playerPalm = document.querySelector('#player-palm');
 const playerFist = document.querySelector('#player-fist');
 const scoreBoard = document.querySelector('.score-board');
 const choices = document.querySelector('.choices');
 const addChoices = document.querySelector('#test-choices');
 const buttonCover = document.createElement('div');
+
 buttonCover.setAttribute('id', 'cover');
 let computerChoice;
 let playerScore;
 let computerScore;
 let playerChoice = '';
+
+const one = document.createElement('img');
+one.src = ('./img/one.svg/')
+one.setAttribute('id', 'one')
+one.style.opacity = 0;
+
 /* needs to be inside function instead of button, so I can call each round */
 addChoices.onclick = () => {
     rockButton.style.display = 'revert';
@@ -55,7 +64,7 @@ const fadeTime = {
     fill: 'forwards'
 }
 const controlFadeTime = {
-    duration: 600,
+    duration: 400,
     fill: 'forwards'
 }
 const fadeTimeSlow = {
@@ -74,15 +83,31 @@ rockButton.setAttribute('id', 'rock-button');
 rockButton.src = ('./img/rock.svg');
 rockButton.style.opacity=0;
 
+const rockChoice = document.createElement('img');
+rockChoice.setAttribute('id', 'rock-choice');
+rockChoice.src = ('./img/rock.svg');
+rockChoice.style.opacity=0;
+
+
 const paperButton = document.createElement('img');
 paperButton.setAttribute('id', 'paper-button');
 paperButton.src = ('./img/paper.svg');
 paperButton.style.opacity=0;
 
+const paperChoice = document.createElement('img');
+paperChoice.setAttribute('id', 'paper-choice');
+paperChoice.src = ('./img/paper.svg');
+paperChoice.style.opacity=0;
+
 const scissorsButton = document.createElement('img');
 scissorsButton.setAttribute('id', 'scissors-button');
 scissorsButton.src = ('./img/scissors.svg');
 scissorsButton.style.opacity=0;
+
+const scissorsChoice = document.createElement('img');
+scissorsChoice.setAttribute('id', 'scissors-choice');
+scissorsChoice.src = ('./img/scissors.svg');
+scissorsChoice.style.opacity=0;
 
 choices.appendChild(rockButton);
 choices.appendChild(paperButton);
@@ -123,6 +148,12 @@ rockButton.addEventListener('click', () => {
         controls.style.display= 'revert';
         controls.animate(appear, fadeTimeSlow);
     }, 4000);
+    setTimeout(() => {
+        controls.animate(disappear, controlFadeTime);
+    }, 8000);
+    setTimeout(() => {
+        controls.style.display = 'none';
+    }, 8600);
     return playerChoice;
 })
 paperButton.addEventListener('click', () => {
@@ -150,6 +181,12 @@ paperButton.addEventListener('click', () => {
         controls.style.display= 'revert';
         controls.animate(appear, fadeTimeSlow);
     }, 4000);
+    setTimeout(() => {
+        controls.animate(disappear, controlFadeTime);
+    }, 8000);
+    setTimeout(() => {
+        controls.style.display = 'none';
+    }, 8600);
     console.log(playerChoice);
     return playerChoice;
 })
@@ -178,6 +215,12 @@ scissorsButton.addEventListener('click', () => {
         controls.style.display= 'revert';
         controls.animate(appear, fadeTimeSlow);
     }, 4000);
+    setTimeout(() => {
+        controls.animate(disappear, controlFadeTime);
+    }, 8000);
+    setTimeout(() => {
+        controls.style.display = 'none';
+    }, 8600);
     console.log(playerChoice);
     return playerChoice;
 })
@@ -232,9 +275,7 @@ onkeydown = onkeyup = function (event) {
         playerFist.animate(hitPalm, fistDownTimeFast);
         computerFist.animate(hitPalmMirror, fistDownTimeFast);
         controls.animate(disappear, controlFadeTime);
-        setTimeout( () => {
         controls.style.display = 'none';
-        }, 600);
         i++;
         delete input['Shift'];
     }
@@ -244,8 +285,28 @@ onkeydown = onkeyup = function (event) {
         computerThumb.animate(palmHitMirror, palmTime);
         playerFist.animate(hitPalm, fistDownTimeFast);
         computerFist.animate(hitPalmMirror, fistDownTimeFast);
-        setTimeout( () => {playRound()}, 400);
-        playerChoice = '';
+        computerFist.animate(disappear, fadeTimeSlow);
+        playerFist.animate(disappear, fadeTimeSlow);
+        controls.style.display = 'none';
+        setTimeout( () => {
+            playerFist.style.display = 'none';
+            if (playerChoice === 0) {
+                playerHands.appendChild(rockChoice);
+                rockChoice.animate(appear, fadeTimeSlow);
+                playerChoice = '';
+            }
+            else if (playerChoice === 1) {
+                playerHands.appendChild(paperChoice);
+                paperChoice.animate(appear, fadeTimeSlow);
+                playerChoice = '';
+            }
+            else if (playerChoice === 2) {
+                playerHands.appendChild(scissorsChoice);
+                scissorsChoice.animate(appear, fadeTimeSlow);
+                playerChoice = '';
+            }
+        }, 2400);
+        setTimeout( () => {playRound()}, 1200);
         return i = 0;
     }
 }
@@ -261,6 +322,7 @@ function playRound() {
     else if (computerChoice === 0 && playerChoice === 2
     || computerChoice === 1 && playerChoice === 0
     || computerChoice === 2 && playerChoice === 1) {
+
         computerScore = ++computerScore;
         alert('You lose this round :(');
     }
