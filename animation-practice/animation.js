@@ -66,8 +66,8 @@ computerFive.style.opacity = 0;
 
 buttonCover.setAttribute('id', 'cover');
 let computerChoice;
-let playerScore;
-let computerScore;
+let playerScore = 0;
+let computerScore= 0;
 let playerChoice = '';
 
 
@@ -136,9 +136,13 @@ rockButton.style.opacity=0;
 
 const rockChoice = document.createElement('img');
 rockChoice.setAttribute('id', 'rock-choice');
-rockChoice.src = ('./img/rock.svg');
+rockChoice.src = ('./img/rock-non-transparent.svg');
 rockChoice.style.opacity=0;
 
+const rockChoiceComputer = document.createElement('img');
+rockChoiceComputer.setAttribute('id', 'rock-choice-computer');
+rockChoiceComputer.src = ('./img/rock-non-transparent.svg');
+rockChoiceComputer.style.opacity=0;
 
 const paperButton = document.createElement('img');
 paperButton.setAttribute('id', 'paper-button');
@@ -147,8 +151,13 @@ paperButton.style.opacity=0;
 
 const paperChoice = document.createElement('img');
 paperChoice.setAttribute('id', 'paper-choice');
-paperChoice.src = ('./img/paper.svg');
+paperChoice.src = ('./img/paper-non-transparent.svg');
 paperChoice.style.opacity=0;
+
+const paperChoiceComputer = document.createElement('img');
+paperChoiceComputer.setAttribute('id', 'paper-choice-computer');
+paperChoiceComputer.src = ('./img/paper-non-transparent.svg');
+paperChoiceComputer.style.opacity=0;
 
 const scissorsButton = document.createElement('img');
 scissorsButton.setAttribute('id', 'scissors-button');
@@ -157,8 +166,13 @@ scissorsButton.style.opacity=0;
 
 const scissorsChoice = document.createElement('img');
 scissorsChoice.setAttribute('id', 'scissors-choice');
-scissorsChoice.src = ('./img/scissors.svg');
+scissorsChoice.src = ('./img/scissors-non-transparent.svg');
 scissorsChoice.style.opacity=0;
+
+const scissorsChoiceComputer = document.createElement('img');
+scissorsChoiceComputer.setAttribute('id', 'scissors-choice-computer');
+scissorsChoiceComputer.src = ('./img/scissors-non-transparent.svg');
+scissorsChoiceComputer.style.opacity=0;
 
 choices.appendChild(rockButton);
 choices.appendChild(paperButton);
@@ -365,6 +379,7 @@ function getComputerChoice() {
     computerChoice = Math.floor(Math.random() * 3);
     return computerChoice;
 }   
+
 function playRound() {
     getComputerChoice();
     if (computerChoice === playerChoice) {
@@ -374,21 +389,83 @@ function playRound() {
     || computerChoice === 1 && playerChoice === 0
     || computerChoice === 2 && playerChoice === 1) {
         computerScore = ++computerScore;
-        alert('You lose this round :(');
+        if (computerScore === 1) {
+            opponentZero.animate(disappear, fadeTime);
+            setTimeout(() => {
+                opponentZero.replaceWith(computerOne);
+                computerOne.animate(appear, fadeTime);
+            }, 400);
+        }
+        else if (computerScore === 2) {
+            computerOne.animate(disappear, fadeTime);
+            setTimeout(() => {
+                computerOne.replaceWith(computerTwo);
+                computerTwo.animate(appear, fadeTime);
+            }, 400);
+        }
+        else if (computerScore === 3) {
+            computerTwo.animate(disappear, fadeTime);
+            setTimeout(() => {
+                computerTwo.replaceWith(computerThree);
+                computerThree.animate(appear, fadeTime);
+            }, 400);
+        }
+        else if (computerScore === 4) {
+            computerThree.animate(disappear, fadeTime);
+            setTimeout(() => {
+                computerThree.replaceWith(computerFour);
+                computerFour.animate(appear, fadeTime);
+            }, 400);
+        }
+        else if (computerScore === 5) {
+            computerFour.animate(disappear, fadeTime);
+            setTimeout(() => {
+                computerFour.replaceWith(computerFive);
+                computerFive.animate(appear, fadeTime);
+            }, 400);
+            /* New timeout and then handle game end*/
+        }
     }
     else {
         playerScore = ++playerScore;
-        if (playerScore === 1) 
-        playerZero.animate(disappear, fadeTime);
-        setTimeout(() => {
-            playerZero.replaceWith(playerOne);
-            playerOne.animate(appear, fadeTime);
-        }, 600);
-        
-        console.log(playerScore)
-        alert('You win this round :)');
-    }
-    console.log(computerScore + ' ' + playerScore);
+        console.log(playerScore);
+        if (playerScore === 1) {
+            playerZero.animate(disappear, fadeTime);
+            setTimeout(() => {
+                playerZero.replaceWith(playerOne);
+                playerOne.animate(appear, fadeTime);
+            }, 400);
+        }
+        else if(playerScore === 2) {
+            playerOne.animate(disappear, fadeTime);
+            setTimeout(() => {
+                playerOne.replaceWith(playerTwo);
+                playerTwo.animate(appear, fadeTime);
+            }, 400);
+        }
+        else if(playerScore === 3) {
+            playerTwo.animate(disappear, fadeTime);
+            setTimeout(() => {
+                playerTwo.replaceWith(playerThree);
+                playerThree.animate(appear, fadeTime);
+            }, 400);
+        }
+        else if(playerScore === 4) {
+            playerThree.animate(disappear, fadeTime);
+            setTimeout(() => {
+                playerThree.replaceWith(playerFour);
+                playerFour.animate(appear, fadeTime);
+            }, 400);
+        }
+        else if(playerScore === 5) {
+            playerFour.animate(disappear, fadeTime);
+            setTimeout(() => {
+                playerFour.replaceWith(playerFive);
+                playerFive.animate(appear, fadeTime);
+            }, 400);
+            /* New timeout and then handle game end*/
+        }
+}
 }
 const raiseHand = [
     {transform: 'rotate(-18deg) translateY(-44px)'}
