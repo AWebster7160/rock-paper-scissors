@@ -9,6 +9,60 @@ const scoreBoard = document.querySelector('.score-board');
 const choices = document.querySelector('.choices');
 const addChoices = document.querySelector('#test-choices');
 const buttonCover = document.createElement('div');
+const playerScoreArea = document.querySelector('#player-score-area');
+const opponentScoreArea = document.querySelector('#opponent-score-area');
+const playerZero = document.querySelector('#you');
+const opponentZero = document.querySelector('#opponent');
+
+const playerOne = document.createElement('img');
+playerOne.src = ('./img/one.svg')
+playerOne.setAttribute('id', 'player-one')
+playerOne.style.opacity = 0;
+
+const computerOne = document.createElement('img');
+computerOne.src = ('./img/opponent-one.svg')
+computerOne.setAttribute('id', 'computer-one')
+computerOne.style.opacity = 0;
+
+const playerTwo = document.createElement('img');
+playerTwo.src = ('./img/two.svg');
+playerTwo.setAttribute('id', 'player-two');
+playerTwo.style.opacity = 0;
+
+const computerTwo = document.createElement('img');
+computerTwo.src = ('./img/opponent-two.svg');
+computerTwo.setAttribute('id', 'computer-two');
+computerTwo.style.opacity = 0;
+
+const playerThree = document.createElement('img');
+playerThree.src = ('./img/three.svg');
+playerThree.setAttribute('id', 'player-three');
+playerThree.style.opacity = 0;
+
+const computerThree = document.createElement('img');
+computerThree.src = ('./img/opponent-three.svg');
+computerThree.setAttribute('id', 'computer-three');
+computerThree.style.opacity = 0;
+
+const playerFour = document.createElement('img');
+playerFour.src = ('./img/four.svg');
+playerFour.setAttribute('id', 'player-four');
+playerFour.style.opacity = 0;
+
+const computerFour = document.createElement('img');
+computerFour.src = ('./img/opponent-four.svg');
+computerFour.setAttribute('id', 'computer-four');
+computerFour.style.opacity = 0;
+
+const playerFive = document.createElement('img');
+playerFive.src = ('./img/five.svg');
+playerFive.setAttribute('id', 'player-five');
+playerFive.style.opacity = 0;
+
+const computerFive = document.createElement('img');
+computerFive.src = ('./img/opponent-five.svg');
+computerFive.setAttribute('id', 'computer-five');
+computerFive.style.opacity = 0;
 
 buttonCover.setAttribute('id', 'cover');
 let computerChoice;
@@ -16,10 +70,7 @@ let playerScore;
 let computerScore;
 let playerChoice = '';
 
-const one = document.createElement('img');
-one.src = ('./img/one.svg/')
-one.setAttribute('id', 'one')
-one.style.opacity = 0;
+
 
 /* needs to be inside function instead of button, so I can call each round */
 addChoices.onclick = () => {
@@ -322,12 +373,18 @@ function playRound() {
     else if (computerChoice === 0 && playerChoice === 2
     || computerChoice === 1 && playerChoice === 0
     || computerChoice === 2 && playerChoice === 1) {
-
         computerScore = ++computerScore;
         alert('You lose this round :(');
     }
     else {
         playerScore = ++playerScore;
+        if (playerScore === 1) 
+        playerZero.animate(disappear, fadeTime);
+        setTimeout(() => {
+            playerZero.replaceWith(playerOne);
+            playerOne.animate(appear, fadeTime);
+        }, 600);
+        
         console.log(playerScore)
         alert('You win this round :)');
     }

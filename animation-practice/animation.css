@@ -4,9 +4,6 @@ body {
     overflow: hidden;
     background-color: rgb(255, 247, 227);
 }
-
-
-
 .bottom-hands {
     display: flex;
     flex-direction: row;
@@ -14,13 +11,11 @@ body {
     align-items: flex-end;
     margin-top: -29vh;
 }
-
 .player-hands {
     display: flex;
     flex-direction: column;
     position: relative;
 }
-
 .computer-hands {
     display: flex;
     flex-direction: column;
@@ -28,7 +23,6 @@ body {
     margin-bottom: -31vh;
     margin-right: 4vw;
 }
-
 #player-fist {
     height: 46vh;
     width: 46vw;
@@ -37,7 +31,6 @@ body {
     left: -28vw;
     transform: rotate(-10deg);
 } 
-
 #player-palm {
     height: 40vh;
     width: 40vw;
@@ -45,7 +38,6 @@ body {
     top:  48vh;
     left: -24.5vw;
 }
-
 #computer-palm {
     height: 36vh;
     width: 36vw;
@@ -55,7 +47,6 @@ body {
     z-index: 0;
     transform: rotate(-10deg);
 }
-
 #computer-thumb {
     height: 36vh;
     width: 36vw;
@@ -66,7 +57,6 @@ body {
     z-index: 2;
     transform: rotate(-10deg);
 }
-
 #computer-fist {
     height: 44vh;
     width: 44vw;
@@ -76,28 +66,15 @@ body {
     transform: rotate(-10deg);
     z-index: 1;
 }
-
 #rock-button {
     height: 12vh;
     width: 12vw; 
     margin-top: 24vh;
     margin-right: -4vw;
 }
-#rock-choice {
-    position: absolute;
-    height: 12vh;
-    width: 12vw;
-    top: 63vh;
-}
 #paper-button {
     height: 12vh;
     width: 12vw;
-}
-#paper-choice {
-    position: absolute;
-    height: 12vh;
-    width: 12vw;
-    top: 63vh;
 }
 #scissors-button {
     height: 12vh;
@@ -105,7 +82,9 @@ body {
     margin-top: 24vh;
     margin-left: -4vw;
 }
-#scissors-choice {
+#rock-choice,
+    #paper-choice,
+        #scissors-choice {
     position: absolute;
     height: 12vh;
     width: 12vw;
@@ -120,8 +99,6 @@ body {
     min-height: 36vh;
     order: 2;
 }
-
-
 #cover {
     min-height: 40vh;
     min-width: 40vw;
@@ -129,7 +106,6 @@ body {
     margin-left: -40vw;
     z-index: 2;
 }
-   
 #controls {
     z-index: 6;
     margin-bottom: -30vh;
@@ -140,7 +116,6 @@ body {
     z-index: 1;
     order: 2;
 }
-   
 .score-board {
     display: flex;
     flex-direction: row;
@@ -151,19 +126,20 @@ body {
     order:1;
     gap: 45vw;
 }
-#player-score-area {
-    height: 22vh;
-    width: 21vw;
-    margin-left: 6vw; 
-}
-#opponent-score-area {
-    height: 22vh;
-    width: 22vw;
-    margin-right: 6vw;
-}
 .game-area  {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+#player-score-area {
+    position: relative;
+    height: 22vh;
+    width: 21vw;
+    left: 6vw; 
+}
+#opponent-score-area {
+    height: 22vh;
+    width: 22.5vw;
+    margin-right: 6vw;
 }
