@@ -70,10 +70,15 @@ let playerScore = 0;
 let computerScore= 0;
 let playerChoice = '';
 
+playerHands.style.visibility='hidden';
+playerHands.style.opacity=0;
+computerHands.style.visibility='hidden';
+computerHands.style.opacity=0;
+scoreBoard.style.visibility='hidden';
+scoreBoard.style.opacity=0;
 
-
-/* needs to be inside function instead of button, so I can call each round */
-addChoices.onclick = () => {
+function buttonShow() {
+    setTimeout(() => {
     rockButton.style.display = 'revert';
     paperButton.style.display = 'revert';
     scissorsButton.style.display = 'revert';
@@ -83,10 +88,45 @@ addChoices.onclick = () => {
     paperButton.addEventListener('mouseout', paperOut);
     scissorsButton.addEventListener('mouseover', scissorsOver);
     scissorsButton.addEventListener('mouseout', scissorsOut);
-    rockButton.animate(appear, fadeTime);
-    paperButton.animate(appear, fadeTime);
-    scissorsButton.animate(appear, fadeTime);
-} 
+    rockButton.animate(appear, fadeTimeSlow);
+    paperButton.animate(appear, fadeTimeSlow);
+    scissorsButton.animate(appear, fadeTimeSlow);
+}, 1000);
+}
+
+function firstShow() {
+    setTimeout(() => {
+    rockButton.style.display = 'revert';
+    paperButton.style.display = 'revert';
+    scissorsButton.style.display = 'revert';
+    rockButton.addEventListener('mouseover', rockOver);
+    rockButton.addEventListener('mouseout', rockOut);
+    paperButton.addEventListener('mouseover', paperOver);
+    paperButton.addEventListener('mouseout', paperOut);
+    scissorsButton.addEventListener('mouseover', scissorsOver);
+    scissorsButton.addEventListener('mouseout', scissorsOut);
+    rockButton.animate(appear, fadeTimeSlow);
+    paperButton.animate(appear, fadeTimeSlower);
+    scissorsButton.animate(appear, fadeTimeSlowest);
+    }, 1000);
+    setTimeout(() => {
+        playerHands.style.visibility='visible';
+        computerHands.style.visibility='visible';
+        playerHands.animate(appear, fadeTimeSlower);
+        computerHands.animate(appear, fadeTimeSlower)
+    }, 4000);
+    setTimeout(() => {
+        scoreBoard.style.visibility='visible';
+        scoreBoard.animate(appear, fadeTimeSlower);
+    }, 6000);
+}
+
+/* needs to be inside function instead of button, so I can call each round */
+document.addEventListener('DOMContentLoaded', function() {
+    firstShow();
+})
+
+
 
 const appear = [
     {opacity: 0},
@@ -119,7 +159,17 @@ const controlFadeTime = {
     fill: 'forwards'
 }
 const fadeTimeSlow = {
-    delay: 600,
+    delay: 1200,
+    duration: 1800,
+    fill: 'forwards'
+}
+const fadeTimeSlower = {
+    delay: 2400,
+    duration: 1800,
+    fill: 'forwards'
+}
+const fadeTimeSlowest = {
+    delay: 3600,
     duration: 1800,
     fill: 'forwards'
 }
@@ -355,7 +405,7 @@ onkeydown = onkeyup = function (event) {
         controls.style.display = 'none';
         getComputerChoice()
         setTimeout( () => {
-            playerFist.style.display = 'none';
+            
             if (playerChoice === 0) {
                 playerHands.appendChild(rockChoice);
                 rockChoice.style.display='revert';
@@ -368,7 +418,7 @@ onkeydown = onkeyup = function (event) {
                     rockChoice.style.display='none';
                     playerFist.style.display='revert'
                     playerFist.animate(appear, fadeTimeSlow);
-                }, 4800);
+                }, 5600);
             }
             else if (playerChoice === 1) {
                 playerHands.appendChild(paperChoice);
@@ -382,7 +432,7 @@ onkeydown = onkeyup = function (event) {
                     paperChoice.style.display='none';
                     playerFist.style.display='revert'
                     playerFist.animate(appear, fadeTimeSlow);
-                }, 4800);
+                }, 5600);
             }
             else if (playerChoice === 2) {
                 playerHands.appendChild(scissorsChoice);
@@ -396,11 +446,10 @@ onkeydown = onkeyup = function (event) {
                     scissorsChoice.style.display='none';
                     playerFist.style.display='revert'
                     playerFist.animate(appear, fadeTimeSlow);
-                }, 4800);
+                }, 5600);
             }
         }, 2400);
         setTimeout( () => {
-            playerFist.style.display = 'none';
             if (computerChoice === 0) {
                 computerHands.appendChild(rockChoiceComputer);
                 rockChoiceComputer.style.display='revert'
@@ -413,7 +462,7 @@ onkeydown = onkeyup = function (event) {
                     rockChoiceComputer.style.display='none';
                     computerFist.style.display='revert'
                     computerFist.animate(appear, fadeTimeSlow);
-                }, 4800);
+                }, 5600);
             }
             else if (computerChoice === 1) {
                 computerHands.appendChild(paperChoiceComputer);
@@ -427,7 +476,7 @@ onkeydown = onkeyup = function (event) {
                     paperChoiceComputer.style.display='none';
                     computerFist.style.display='revert'
                     computerFist.animate(appear, fadeTimeSlow);
-                }, 4800);
+                }, 5600);
             }
             else if (computerChoice === 2) {
                 computerHands.appendChild(scissorsChoiceComputer);
@@ -439,9 +488,9 @@ onkeydown = onkeyup = function (event) {
                 }, 2400);
                 setTimeout(() => {
                     scissorsChoiceComputer.style.display='none';
-                    computerFistFist.style.display='revert'
+                    computerFist.style.display='revert'
                     computerFist.animate(appear, fadeTimeSlow);
-                }, 4800);
+                }, 5600);
             }
         }, 2400);
         setTimeout( () => {playRound()}, 1200);
@@ -454,8 +503,21 @@ function getComputerChoice() {
 }   
 
 function playRound() {
+    setTimeout(() => {
+    rockButton.style.display = 'revert';
+    paperButton.style.display = 'revert';
+    scissorsButton.style.display = 'revert';
+    rockButton.addEventListener('mouseover', rockOver);
+    rockButton.addEventListener('mouseout', rockOut);
+    paperButton.addEventListener('mouseover', paperOver);
+    paperButton.addEventListener('mouseout', paperOut);
+    scissorsButton.addEventListener('mouseover', scissorsOver);
+    scissorsButton.addEventListener('mouseout', scissorsOut);
+    rockButton.animate(appear, fadeTime);
+    paperButton.animate(appear, fadeTime);
+    scissorsButton.animate(appear, fadeTime);
+    }, 8000);
     if (computerChoice === playerChoice) {
-        alert('It\'s a tie! We both picked ' + playerChoice + '!');
     }
     else if (computerChoice === 0 && playerChoice === 2
     || computerChoice === 1 && playerChoice === 0
