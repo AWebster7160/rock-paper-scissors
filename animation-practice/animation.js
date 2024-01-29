@@ -358,36 +358,90 @@ onkeydown = onkeyup = function (event) {
             playerFist.style.display = 'none';
             if (playerChoice === 0) {
                 playerHands.appendChild(rockChoice);
+                rockChoice.style.display='revert';
                 rockChoice.animate(appear, fadeTimeSlow);
                 playerChoice = '';
+                setTimeout(() => {
+                    rockChoice.animate(disappear, fadeTimeSlow);
+                }, 2400);
+                setTimeout(() => {
+                    rockChoice.style.display='none';
+                    playerFist.style.display='revert'
+                    playerFist.animate(appear, fadeTimeSlow);
+                }, 4800);
             }
             else if (playerChoice === 1) {
                 playerHands.appendChild(paperChoice);
+                paperChoice.style.display='revert';
                 paperChoice.animate(appear, fadeTimeSlow);
                 playerChoice = '';
+                setTimeout(() => {
+                    paperChoice.animate(disappear, fadeTimeSlow);
+                }, 2400);
+                setTimeout(() => {
+                    paperChoice.style.display='none';
+                    playerFist.style.display='revert'
+                    playerFist.animate(appear, fadeTimeSlow);
+                }, 4800);
             }
             else if (playerChoice === 2) {
                 playerHands.appendChild(scissorsChoice);
+                scissorsChoice.style.display='revert';
                 scissorsChoice.animate(appear, fadeTimeSlow);
                 playerChoice = '';
+                setTimeout(() => {
+                    scissorsChoice.animate(disappear, fadeTimeSlow);
+                }, 2400);
+                setTimeout(() => {
+                    scissorsChoice.style.display='none';
+                    playerFist.style.display='revert'
+                    playerFist.animate(appear, fadeTimeSlow);
+                }, 4800);
             }
         }, 2400);
         setTimeout( () => {
             playerFist.style.display = 'none';
             if (computerChoice === 0) {
                 computerHands.appendChild(rockChoiceComputer);
+                rockChoiceComputer.style.display='revert'
                 rockChoiceComputer.animate(appear, fadeTimeSlow);
                 computerChoice = '';
+                setTimeout(() => {
+                    rockChoiceComputer.animate(disappear, fadeTimeSlow);
+                }, 2400);
+                setTimeout(() => {
+                    rockChoiceComputer.style.display='none';
+                    computerFist.style.display='revert'
+                    computerFist.animate(appear, fadeTimeSlow);
+                }, 4800);
             }
             else if (computerChoice === 1) {
                 computerHands.appendChild(paperChoiceComputer);
+                paperChoiceComputer.style.display='revert'
                 paperChoiceComputer.animate(appear, fadeTimeSlow);
                 computerChoice = '';
+                setTimeout(() => {
+                    paperChoiceComputer.animate(disappear, fadeTimeSlow);
+                }, 2400);
+                setTimeout(() => {
+                    paperChoiceComputer.style.display='none';
+                    computerFist.style.display='revert'
+                    computerFist.animate(appear, fadeTimeSlow);
+                }, 4800);
             }
             else if (computerChoice === 2) {
                 computerHands.appendChild(scissorsChoiceComputer);
+                scissorsChoiceComputer.style.display='revert'
                 scissorsChoiceComputer.animate(appear, fadeTimeSlow);
                 computerChoice = '';
+                setTimeout(() => {
+                    scissorsChoiceComputer.animate(disappear, fadeTimeSlow);
+                }, 2400);
+                setTimeout(() => {
+                    scissorsChoiceComputer.style.display='none';
+                    computerFistFist.style.display='revert'
+                    computerFist.animate(appear, fadeTimeSlow);
+                }, 4800);
             }
         }, 2400);
         setTimeout( () => {playRound()}, 1200);
