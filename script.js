@@ -104,7 +104,7 @@ function buttonShow() {
     rockButton.animate(appear, fadeTimeSlower);
     paperButton.animate(appear, fadeTimeSlower);
     scissorsButton.animate(appear, fadeTimeSlower);
-}, 1000);
+}, 500);
 }
 
 function firstShow() {
@@ -121,17 +121,17 @@ function firstShow() {
     rockButton.animate(appear, fadeTimeSlow);
     paperButton.animate(appear, fadeTimeSlower);
     scissorsButton.animate(appear, fadeTimeSlowest);
-    }, 1000);
+    }, 500);
     setTimeout(() => {
         playerHands.style.visibility='visible';
         computerHands.style.visibility='visible';
         playerHands.animate(appear, fadeTimeSlower);
         computerHands.animate(appear, fadeTimeSlower)
-    }, 5800);
+    }, 2900);
     setTimeout(() => {
         scoreBoard.style.visibility='visible';
         scoreBoard.animate(appear, fadeTimeSlower);
-    }, 7400);
+    }, 3700);
 }
 
 /* needs to be inside function instead of button, so I can call each round */
@@ -162,31 +162,31 @@ const chooseScissors = [
     {transform: 'scale(2.2) translateY(-2vw) translateX(-5vh)'},
 ]
 const fadeTime = {
-    duration: 300,
+    duration: 150,
     fill: 'forwards'
 }
 const controlFadeTime = {
-    duration: 400,
+    duration: 200,
     fill: 'forwards'
 }
 const fadeTimeSlow = {
-    delay: 1200,
-    duration: 1800,
+    delay: 600,
+    duration: 900,
     fill: 'forwards'
 }
 const fadeTimeSlower = {
-    delay: 2400,
-    duration: 1800,
+    delay: 1200,
+    duration: 900,
     fill: 'forwards'
 }
 const fadeTimeSlowest = {
-    delay: 3600,
-    duration: 1800,
+    delay: 1800,
+    duration: 900,
     fill: 'forwards'
 }
 const fadeTimeDelay = {
-    delay: 2400,
-    duration: 1000,
+    delay: 1200,
+    duration: 500,
     fill: 'forwards'
 }
 
@@ -265,7 +265,7 @@ rockButton.addEventListener('click', () => {
     setTimeout(() => {
         rockButton.animate(disappear, fadeTimeSlow);
         rockButton.animate(revertSize, fadeTimeDelay);
-    }, 1600);
+    }, 800);
     setTimeout(() => {
         rockButton.style.display = 'none';
         buttonCover.style.display = 'none';
@@ -273,13 +273,13 @@ rockButton.addEventListener('click', () => {
         scissorsButton.style.display = 'none';
         controls.style.display= 'revert';
         controls.animate(appear, fadeTimeSlow);
-    }, 4000);
+    }, 2000);
     setTimeout(() => {
         controls.animate(disappear, controlFadeTime);
-    }, 8000);
+    }, 4000);
     setTimeout(() => {
         controls.style.display = 'none';
-    }, 8600);
+    }, 4300);
     return playerChoice;
 })
 paperButton.addEventListener('click', () => {
@@ -298,7 +298,7 @@ paperButton.addEventListener('click', () => {
     setTimeout(() => {
         paperButton.animate(disappear, fadeTimeSlow);
         paperButton.animate(revertSize, fadeTimeDelay);
-    }, 1600);
+    }, 800);
     setTimeout(() => {
         rockButton.style.display = 'none';
         paperButton.style.display = 'none';
@@ -306,13 +306,13 @@ paperButton.addEventListener('click', () => {
         buttonCover.style.display = 'none';
         controls.style.display= 'revert';
         controls.animate(appear, fadeTimeSlow);
-    }, 4000);
+    }, 2000);
     setTimeout(() => {
         controls.animate(disappear, controlFadeTime);
-    }, 8000);
+    }, 4000);
     setTimeout(() => {
         controls.style.display = 'none';
-    }, 8600);
+    }, 4300);
     console.log(playerChoice);
     return playerChoice;
 })
@@ -332,7 +332,7 @@ scissorsButton.addEventListener('click', () => {
     setTimeout(() => {
         scissorsButton.animate(disappear, fadeTimeSlow);
         scissorsButton.animate(revertSize, fadeTimeDelay);
-    }, 1600);
+    }, 800);
     setTimeout(() => {
         rockButton.style.display = 'none';
         paperButton.style.display = 'none';
@@ -340,13 +340,13 @@ scissorsButton.addEventListener('click', () => {
         buttonCover.style.display = 'none';
         controls.style.display= 'revert';
         controls.animate(appear, fadeTimeSlow);
-    }, 4000);
+    }, 2000);
     setTimeout(() => {
         controls.animate(disappear, controlFadeTime);
-    }, 8000);
+    }, 4000);
     setTimeout(() => {
         controls.style.display = 'none';
-    }, 8600);
+    }, 4300);
     console.log(playerChoice);
     return playerChoice;
 })
@@ -357,11 +357,11 @@ const iconShrink = [
     {transform: 'scale(1)'}
 ]
 growTime = {
-    duration: 300,
+    duration: 150,
     fill: 'forwards'
 }
 shrinkTime = {
-    duration: 500,
+    duration: 250,
     fill: 'forwards'
 }
 
@@ -423,12 +423,12 @@ onkeydown = onkeyup = function (event) {
                 playerChoice = '';
                 setTimeout(() => {
                     rockChoice.animate(disappear, fadeTimeSlow);
-                }, 2400);
+                }, 1200);
                 setTimeout(() => {
                     rockChoice.style.display='none';
                     playerFist.style.display='revert'
                     playerFist.animate(appear, fadeTimeSlow);
-                }, 5600);
+                }, 2800);
             }
             else if (playerChoice === 1) {
                 playerHands.appendChild(paperChoice);
@@ -437,12 +437,12 @@ onkeydown = onkeyup = function (event) {
                 playerChoice = '';
                 setTimeout(() => {
                     paperChoice.animate(disappear, fadeTimeSlow);
-                }, 2400);
+                }, 1200);
                 setTimeout(() => {
                     paperChoice.style.display='none';
                     playerFist.style.display='revert'
                     playerFist.animate(appear, fadeTimeSlow);
-                }, 5600);
+                }, 2800);
             }
             else if (playerChoice === 2) {
                 playerHands.appendChild(scissorsChoice);
@@ -451,14 +451,14 @@ onkeydown = onkeyup = function (event) {
                 playerChoice = '';
                 setTimeout(() => {
                     scissorsChoice.animate(disappear, fadeTimeSlow);
-                }, 2400);
+                }, 1200);
                 setTimeout(() => {
                     scissorsChoice.style.display='none';
                     playerFist.style.display='revert'
                     playerFist.animate(appear, fadeTimeSlow);
-                }, 5600);
+                }, 2800);
             }
-        }, 2400);
+        }, 1200);
         setTimeout( () => {
             if (computerChoice === 0) {
                 computerHands.appendChild(rockChoiceComputer);
@@ -467,12 +467,12 @@ onkeydown = onkeyup = function (event) {
                 computerChoice = '';
                 setTimeout(() => {
                     rockChoiceComputer.animate(disappear, fadeTimeSlow);
-                }, 2400);
+                }, 1200);
                 setTimeout(() => {
                     rockChoiceComputer.style.display='none';
                     computerFist.style.display='revert'
                     computerFist.animate(appear, fadeTimeSlow);
-                }, 5600);
+                }, 2800);
             }
             else if (computerChoice === 1) {
                 computerHands.appendChild(paperChoiceComputer);
@@ -481,12 +481,12 @@ onkeydown = onkeyup = function (event) {
                 computerChoice = '';
                 setTimeout(() => {
                     paperChoiceComputer.animate(disappear, fadeTimeSlow);
-                }, 2400);
+                }, 1200);
                 setTimeout(() => {
                     paperChoiceComputer.style.display='none';
                     computerFist.style.display='revert'
                     computerFist.animate(appear, fadeTimeSlow);
-                }, 5600);
+                }, 2800);
             }
             else if (computerChoice === 2) {
                 computerHands.appendChild(scissorsChoiceComputer);
@@ -495,15 +495,15 @@ onkeydown = onkeyup = function (event) {
                 computerChoice = '';
                 setTimeout(() => {
                     scissorsChoiceComputer.animate(disappear, fadeTimeSlow);
-                }, 2400);
+                }, 1200);
                 setTimeout(() => {
                     scissorsChoiceComputer.style.display='none';
                     computerFist.style.display='revert'
                     computerFist.animate(appear, fadeTimeSlow);
-                }, 5600);
+                }, 2800);
             }
-        }, 2400);
-        setTimeout( () => {playRound()}, 1200);
+        }, 1200);
+        setTimeout( () => {playRound()}, 600);
         return i = 0;
     }
 }
@@ -525,44 +525,44 @@ function playRound() {
             setTimeout(() => {
                 opponentZero.replaceWith(computerOne);
                 computerOne.animate(appear, fadeTime);
-            }, 3200);
+            }, 1600);
         }
         else if (computerScore === 2) {
             computerOne.animate(disappear, fadeTimeSlow);
             setTimeout(() => {
                 computerOne.replaceWith(computerTwo);
                 computerTwo.animate(appear, fadeTime);
-            }, 3200);
+            }, 1600);
         }
         else if (computerScore === 3) {
             computerTwo.animate(disappear, fadeTimeSlow);
             setTimeout(() => {
                 computerTwo.replaceWith(computerThree);
                 computerThree.animate(appear, fadeTime);
-            }, 3200);
+            }, 1600);
         }
         else if (computerScore === 4) {
             computerThree.animate(disappear, fadeTimeSlow);
             setTimeout(() => {
                 computerThree.replaceWith(computerFour);
                 computerFour.animate(appear, fadeTime);
-            }, 3200);
+            }, 1600);
         }
         else if (computerScore === 5) {
             computerFour.animate(disappear, fadeTimeSlow);
             setTimeout(() => {
                 computerFour.replaceWith(computerFive);
                 computerFive.animate(appear, fadeTime);
-            }, 600);
+            }, 300);
             setTimeout(() => {
                 scoreBoard.animate(disappear, fadeTimeSlow);
                 choices.animate(disappear, fadeTimeSlow);
                 bottomHands.animate(disappear, fadeTimeSlow);
-            }, 1200);
+            }, 600);
             setTimeout(() => {
                 gameArea.appendChild(defeat);
                 defeat.animate(appear, fadeTimeSlow);
-            }, 2600);
+            }, 1300);
         }
     }
     else {
@@ -572,44 +572,44 @@ function playRound() {
             setTimeout(() => {
                 playerZero.replaceWith(playerOne);
                 playerOne.animate(appear, fadeTime);
-            }, 3200);
+            }, 1600);
         }
         else if(playerScore === 2) {
             playerOne.animate(disappear, fadeTimeSlow);
             setTimeout(() => {
                 playerOne.replaceWith(playerTwo);
                 playerTwo.animate(appear, fadeTime);
-            }, 3200);
+            }, 1600);
         }
         else if(playerScore === 3) {
             playerTwo.animate(disappear, fadeTimeSlow);
             setTimeout(() => {
                 playerTwo.replaceWith(playerThree);
                 playerThree.animate(appear, fadeTime);
-            }, 3200);
+            }, 1600);
         }
         else if(playerScore === 4) {
             playerThree.animate(disappear, fadeTimeSlow);
             setTimeout(() => {
                 playerThree.replaceWith(playerFour);
                 playerFour.animate(appear, fadeTime);
-            }, 3200);
+            }, 1600);
         }
         else if(playerScore === 5) {
             playerFour.animate(disappear, fadeTimeSlow);
             setTimeout(() => {
                 playerFour.replaceWith(playerFive);
                 playerFive.animate(appear, fadeTime);
-            }, 600);
+            }, 300);
             setTimeout(() => {
                 scoreBoard.animate(disappear, fadeTimeSlow);
                 choices.animate(disappear, fadeTimeSlow);
                 bottomHands.animate(disappear, fadeTimeSlow);
-            }, 1200);
+            }, 600);
             setTimeout(() => {      
                 gameArea.appendChild(victory);
                 victory.animate(appear, fadeTimeSlow);
-            }, 2600);
+            }, 1300);
         }
 }
 }
@@ -620,7 +620,7 @@ const raiseHandMirror = [
     {transform: 'rotate(12deg) translateY(-50px)'},
 ]
 const raiseHandTime = {
-    duration: 800,
+    duration: 400,
     fill: 'forwards',
     iterations: 1,
 }
@@ -631,12 +631,12 @@ const hitPalmMirror = [
     {transform: 'rotate(-10deg'},
 ]
 const fistDownTime = {
-    duration: 500,
+    duration: 250,
     fill: 'forwards',
     easing: 'ease-out'
 }
 const fistDownTimeFast = {
-    duration: 100,
+    duration: 70,
     fill: 'forwards',
     easing: 'ease-in'
 }
@@ -653,8 +653,8 @@ const palmHitMirror = [
     { transform: 'rotate(-10deg)'},
 ];
 const palmTime = {
-    duration: 800,
-    delay: 100,
+    duration: 400,
+    delay: 50,
 }
 window.addEventListener('keydown', (event) => {
     if (event.key === 'Shift') {
